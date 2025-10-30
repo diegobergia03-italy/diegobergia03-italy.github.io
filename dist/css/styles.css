@@ -10978,10 +10978,24 @@ html {
 .masthead .masthead-subheading {
   font-size: 1.25rem;
 }
-.masthead .masthead-avatar {
-  width: 15rem;
+/* === Masthead e Avatar === */
+.masthead-avatar {
+  width: 260px;                /* Zoom regolabile */
+  aspect-ratio: 1 / 1;         /* mantiene proporzioni 1:1 */
+  object-fit: cover;           /* riempie il cerchio */
+  object-position: center 30%; /* centra il volto un po’ più in alto */
+  border-radius: 50%;          /* rotondo perfetto */
+  border: 4px solid #fff;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+  display: block;
+  transition: transform 0.3s ease;
 }
 
+.masthead-avatar:hover {
+  transform: scale(1.06);      /* piccolo zoom al passaggio */
+}
+
+/* --- Dimensioni testo e padding header --- */
 @media (min-width: 992px) {
   .masthead {
     padding-top: calc(6rem + 104px);
@@ -10995,6 +11009,72 @@ html {
     font-size: 1.5rem;
   }
 }
+
+/* === Custom Theme Colors: Tech Blue === */
+:root {
+  --bs-primary: #1976D2;   /* Blu tecnico principale */
+  --bs-secondary: #263238; /* Grigio-blu scuro per contrasti */
+  --bs-light: #E3F2FD;     /* Blu chiarissimo */
+  --bs-dark: #0D47A1;      /* Blu profondo */
+}
+
+/* --- Color Palette --- */
+.bg-primary { background-color: var(--bs-primary) !important; }
+.text-primary { color: var(--bs-primary) !important; }
+
+.btn-primary {
+  background-color: var(--bs-primary);
+  border-color: var(--bs-primary);
+}
+.btn-primary:hover {
+  background-color: var(--bs-dark);
+  border-color: var(--bs-dark);
+}
+
+/* --- Header Gradient --- */
+header.masthead {
+  background: linear-gradient(160deg, var(--bs-primary) 0%, var(--bs-dark) 100%);
+}
+
+/* --- Navbar --- */
+#mainNav {
+  background-color: var(--bs-secondary);
+}
+#mainNav .navbar-brand,
+#mainNav .nav-link {
+  color: white !important;
+}
+#mainNav .nav-link:hover {
+  color: var(--bs-light) !important;
+}
+
+/* --- Divider con icona chip --- */
+.divider-custom .divider-custom-line {
+  background-color: var(--bs-primary);
+}
+.divider-custom .divider-custom-icon {
+  color: var(--bs-primary);
+}
+.divider-chip {
+  width: 28px;
+  height: auto;
+  opacity: 0.9;
+  filter: brightness(0); /* nero per sezioni chiare */
+}
+.divider-light .divider-chip {
+  filter: brightness(0) invert(1); /* bianco per sezioni scure */
+}
+
+/* --- Footer --- */
+.footer {
+  background-color: var(--bs-secondary);
+  color: white;
+}
+.footer a { color: var(--bs-light); }
+.footer a:hover { color: var(--bs-primary); }
+.copyright { background-color: #1a252f; }
+
+/* === Portfolio Hover === */
 .portfolio .portfolio-item {
   cursor: pointer;
   position: relative;
@@ -11011,275 +11091,46 @@ html {
   opacity: 0;
   background-color: rgba(26, 188, 156, 0.9);
 }
-.portfolio .portfolio-item .portfolio-item-caption:hover {
+.portfolio .portfolio-item:hover .portfolio-item-caption {
   opacity: 1;
 }
-.portfolio .portfolio-item .portfolio-item-caption .portfolio-item-caption-content {
-  font-size: 1.5rem;
-}
-
 .portfolio-modal .btn-close {
   color: #1abc9c;
   font-size: 2rem;
   padding: 1rem;
 }
-.portfolio-modal .portfolio-modal-title {
-  font-size: 2.25rem;
-  line-height: 2rem;
-}
-@media (min-width: 992px) {
-  .portfolio-modal .portfolio-modal-title {
-    font-size: 3rem;
-    line-height: 2.5rem;
-  }
-}
 
-.footer {
-  padding-top: 5rem;
-  padding-bottom: 5rem;
-  background-color: #2c3e50;
-  color: #fff;
-}
-
-.copyright {
-  background-color: #1a252f;
-}
-/* --- Hover animation for Skills icons --- */
+/* === Skills Animations === */
 #skills i {
   transition: transform 0.3s ease, color 0.3s ease;
-  color: #0d6efd; /* blu principale del tema */
+  color: var(--bs-primary);
 }
-
 #skills i:hover {
   transform: scale(1.15) rotate(-5deg);
-  color: #198754; /* verde bootstrap per il contrasto */
-}
-
-#skills h5 {
-  transition: color 0.3s ease;
-}
-
-#skills .col-md-4:hover h5 {
   color: #198754;
 }
-/* --- Fade-in animation for Skills --- */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
+#skills h5 { transition: color 0.3s ease; }
+#skills .col-md-4:hover h5,
+#skills .col-lg-3:hover h5 { color: #198754; }
 
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
 #skills .col-md-4,
 #skills .col-lg-3 {
   opacity: 0;
   transform: translateY(30px);
   transition: opacity 0.6s ease, transform 0.6s ease;
 }
-
-/* quando la sezione entra nello schermo */
 #skills.visible .col-md-4,
 #skills.visible .col-lg-3 {
   animation: fadeInUp 0.6s ease forwards;
 }
-/* --- Delay a cascata per le icone delle skills --- */
-#skills.visible .col-md-4:nth-child(1),
-#skills.visible .col-lg-3:nth-child(1) {
-  animation-delay: 0.2s;
-}
-#skills.visible .col-md-4:nth-child(2),
-#skills.visible .col-lg-3:nth-child(2) {
-  animation-delay: 0.4s;
-}
-#skills.visible .col-md-4:nth-child(3),
-#skills.visible .col-lg-3:nth-child(3) {
-  animation-delay: 0.6s;
-}
-#skills.visible .col-md-4:nth-child(4),
-#skills.visible .col-lg-3:nth-child(4) {
-  animation-delay: 0.8s;
-}
-#skills.visible .col-md-4:nth-child(5),
-#skills.visible .col-lg-3:nth-child(5) {
-  animation-delay: 1.0s;
-}
-#skills.visible .col-md-4:nth-child(6),
-#skills.visible .col-lg-3:nth-child(6) {
-  animation-delay: 1.2s;
-}
-#skills.visible .col-md-4:nth-child(7),
-#skills.visible .col-lg-3:nth-child(7) {
-  animation-delay: 1.4s;
-}
-.masthead-avatar {
-  border: 4px solid white;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
-}
-/* === Custom Theme Colors: Tech Blue === */
-:root {
-  --bs-primary: #1976D2; /* Blu tecnico principale */
-  --bs-secondary: #263238; /* Grigio-blu scuro per contrasti */
-  --bs-light: #E3F2FD; /* Blu chiarissimo per sfondi leggeri */
-  --bs-dark: #0D47A1; /* Blu profondo per sezioni intense */
-}
-
-/* Colori personalizzati per gli elementi principali */
-.bg-primary {
-  background-color: var(--bs-primary) !important;
-}
-
-.text-primary {
-  color: var(--bs-primary) !important;
-}
-
-.btn-primary {
-  background-color: var(--bs-primary);
-  border-color: var(--bs-primary);
-}
-
-.btn-primary:hover {
-  background-color: var(--bs-dark);
-  border-color: var(--bs-dark);
-}
-
-/* --- Header Gradient --- */
-header.masthead {
-  background: linear-gradient(160deg, var(--bs-primary) 0%, var(--bs-dark) 100%);
-}
-
-/* --- Navbar personalizzata --- */
-#mainNav {
-  background-color: var(--bs-secondary);
-}
-
-#mainNav .navbar-brand,
-#mainNav .nav-link {
-  color: white !important;
-}
-
-#mainNav .nav-link:hover {
-  color: var(--bs-light) !important;
-}
-
-/* --- Divider (le linee con la stellina) --- */
-.divider-custom .divider-custom-line {
-  background-color: var(--bs-primary);
-}
-
-.divider-custom .divider-custom-icon {
-  color: var(--bs-primary);
-}
-
-/* --- Footer --- */
-.footer {
-  background-color: var(--bs-secondary);
-  color: white;
-}
-
-.footer a {
-  color: var(--bs-light);
-}
-
-.footer a:hover {
-  color: var(--bs-primary);
-}
-/* === Custom Theme Colors: Tech Blue === */
-:root {
-  --bs-primary: #1976D2; /* Blu tecnico principale */
-  --bs-secondary: #263238; /* Grigio-blu scuro per contrasti */
-  --bs-light: #E3F2FD; /* Blu chiarissimo per sfondi leggeri */
-  --bs-dark: #0D47A1; /* Blu profondo per sezioni intense */
-}
-
-/* Colori personalizzati per gli elementi principali */
-.bg-primary {
-  background-color: var(--bs-primary) !important;
-}
-
-.text-primary {
-  color: var(--bs-primary) !important;
-}
-
-.btn-primary {
-  background-color: var(--bs-primary);
-  border-color: var(--bs-primary);
-}
-
-.btn-primary:hover {
-  background-color: var(--bs-dark);
-  border-color: var(--bs-dark);
-}
-
-/* --- Header Gradient --- */
-header.masthead {
-  background: linear-gradient(160deg, var(--bs-primary) 0%, var(--bs-dark) 100%);
-}
-
-/* --- Navbar personalizzata --- */
-#mainNav {
-  background-color: var(--bs-secondary);
-}
-
-#mainNav .navbar-brand,
-#mainNav .nav-link {
-  color: white !important;
-}
-
-#mainNav .nav-link:hover {
-  color: var(--bs-light) !important;
-}
-
-/* --- Divider (le linee con la stellina) --- */
-.divider-custom .divider-custom-line {
-  background-color: var(--bs-primary);
-}
-
-.divider-custom .divider-custom-icon {
-  color: var(--bs-primary);
-}
-
-/* --- Footer --- */
-.footer {
-  background-color: var(--bs-secondary);
-  color: white;
-}
-
-.footer a {
-  color: var(--bs-light);
-}
-
-.footer a:hover {
-  color: var(--bs-primary);
-}
-/* Avatar perfettamente rotondo e centrato */
-.masthead-avatar {
-  width: 260px;              /* regola se la vuoi più grande/piccola */
-  aspect-ratio: 1 / 1;       /* forza il quadrato -> cerchio */
-  object-fit: cover;
-  object-position: center 30%; /* alza un po' il volto (aumenta % se serve) */
-  border-radius: 50%;
-  border: 4px solid #fff;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.25);
-  display: block;
-  transform: none;           /* evita distorsioni */
-}
-.masthead-avatar:hover {
-  transform: scale(1.06);    /* piccolo zoom al passaggio, sempre rotondo */
-}
-/* Custom chip icon style */
-.divider-chip {
-  width: 28px;         /* dimensione icona */
-  height: auto;
-  opacity: 0.9;
-  filter: brightness(0);  /* chip nero per sezioni chiare */
-}
-
-.divider-light .divider-chip {
-  filter: brightness(0) invert(1); /* chip bianco per sezioni scure */
-}
-
-
+#skills.visible .col-md-4:nth-child(1) { animation-delay: 0.2s; }
+#skills.visible .col-md-4:nth-child(2) { animation-delay: 0.4s; }
+#skills.visible .col-md-4:nth-child(3) { animation-delay: 0.6s; }
+#skills.visible .col-md-4:nth-child(4) { animation-delay: 0.8s; }
+#skills.visible .col-md-4:nth-child(5) { animation-delay: 1.0s; }
+#skills.visible .col-md-4:nth-child(6) { animation-delay: 1.2s; }
+#skills.visible .col-md-4:nth-child(7) { animation-delay: 1.4s; }
