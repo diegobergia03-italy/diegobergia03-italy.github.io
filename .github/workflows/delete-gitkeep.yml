@@ -1,0 +1,17 @@
+name: Delete .gitkeep from assets
+on:
+  workflow_dispatch:
+
+jobs:
+  delete:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Remove .gitkeep if present
+        run: |
+          git rm -f dist/assets/.gitkeep || true
+          git rm -f dist/assets/img/.gitkeep || true
+          git commit -m "Remove .gitkeep from assets" || true
+          git push
