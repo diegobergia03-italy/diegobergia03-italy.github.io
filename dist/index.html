@@ -43,19 +43,16 @@
     <!-- Masthead -->
     <header class="masthead bg-primary text-white text-center">
       <div class="container d-flex align-items-center flex-column">
-     <img class="masthead-avatar mb-5"
-     src="assets/profile.jpg?v=1"
-     alt="Profile picture of Diego Bergia" />
+        <img class="masthead-avatar mb-5"
+             src="assets/profile.jpg?v=1"
+             alt="Profile picture of Diego Bergia" />
 
-          <h1 class="masthead-heading text-uppercase mb-0">Diego Bergia</h1>
+        <h1 class="masthead-heading text-uppercase mb-0">Diego Bergia</h1>
 
         <!-- Divider with custom chip -->
         <div class="divider-custom divider-light my-3">
           <div class="divider-custom-line"></div>
-          <div class="divider-custom-icon">
-  <i class="fas fa-microchip"></i>
-</div>
-
+          <div class="divider-custom-icon"><i class="fas fa-microchip"></i></div>
           <div class="divider-custom-line"></div>
         </div>
 
@@ -70,13 +67,9 @@
       <div class="container">
         <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Portfolio</h2>
 
-        <!-- Divider with custom chip -->
         <div class="divider-custom my-3">
           <div class="divider-custom-line"></div>
-            <div class="divider-custom-icon">
-  <i class="fas fa-microchip"></i>
-</div>
-
+          <div class="divider-custom-icon"><i class="fas fa-microchip"></i></div>
           <div class="divider-custom-line"></div>
         </div>
 
@@ -144,13 +137,9 @@
       <div class="container">
         <h2 class="page-section-heading text-center text-uppercase text-white">About</h2>
 
-        <!-- Divider with custom chip -->
         <div class="divider-custom divider-light my-3">
           <div class="divider-custom-line"></div>
-         <div class="divider-custom-icon">
-  <i class="fas fa-microchip"></i>
-</div>
-
+          <div class="divider-custom-icon"><i class="fas fa-microchip"></i></div>
           <div class="divider-custom-line"></div>
         </div>
 
@@ -170,13 +159,9 @@
       <div class="container">
         <h2 class="page-section-heading text-uppercase text-secondary mb-0">Skills</h2>
 
-        <!-- Divider with custom chip -->
         <div class="divider-custom my-3">
           <div class="divider-custom-line"></div>
-          <div class="divider-custom-icon">
-  <i class="fas fa-microchip"></i>
-</div>
-
+          <div class="divider-custom-icon"><i class="fas fa-microchip"></i></div>
           <div class="divider-custom-line"></div>
         </div>
 
@@ -220,57 +205,30 @@
       </div>
     </section>
 
-    <!-- Contact -->
+    <!-- Contact (mailto) -->
     <section class="page-section" id="contact">
       <div class="container">
         <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Contact Me</h2>
 
-        <!-- Divider with custom chip -->
         <div class="divider-custom my-3">
           <div class="divider-custom-line"></div>
-       <div class="divider-custom-icon">
-  <i class="fas fa-microchip"></i>
-</div>
-
-
+          <div class="divider-custom-icon"><i class="fas fa-microchip"></i></div>
           <div class="divider-custom-line"></div>
         </div>
 
-        <div class="row justify-content-center">
-          <div class="col-lg-8 col-xl-7">
-            <form id="contactForm" data-sb-form-api-token="API_TOKEN">
-              <div class="form-floating mb-3">
-                <input class="form-control" id="name" type="text" placeholder="Enter your name..." data-sb-validations="required" />
-                <label for="name">Full name</label>
-                <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
-              </div>
-              <div class="form-floating mb-3">
-                <input class="form-control" id="email" type="email" placeholder="name@example.com" data-sb-validations="required,email" />
-                <label for="email">Email address</label>
-                <div class="invalid-feedback" data-sb-feedback="email:required">An email is required.</div>
-                <div class="invalid-feedback" data-sb-feedback="email:email">Email is not valid.</div>
-              </div>
-              <div class="form-floating mb-3">
-                <input class="form-control" id="phone" type="tel" placeholder="(123) 456-7890" data-sb-validations="required" />
-                <label for="phone">Phone number</label>
-                <div class="invalid-feedback" data-sb-feedback="phone:required">A phone number is required.</div>
-              </div>
-              <div class="form-floating mb-3">
-                <textarea class="form-control" id="message" placeholder="Enter your message here..." style="height: 10rem" data-sb-validations="required"></textarea>
-                <label for="message">Message</label>
-                <div class="invalid-feedback" data-sb-feedback="message:required">A message is required.</div>
-              </div>
-              <div class="d-none" id="submitSuccessMessage">
-                <div class="text-center mb-3">
-                  <div class="fw-bolder">Form submission successful!</div>
-                  To activate this form, sign up at
-                  <a href="https://startbootstrap.com/solution/contact-forms">startbootstrap.com/solution/contact-forms</a>
-                </div>
-              </div>
-              <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Error sending message!</div></div>
-              <button class="btn btn-primary btn-xl disabled" id="submitButton" type="submit">Send</button>
-            </form>
-          </div>
+        <div class="text-center">
+          <p class="lead mb-4">
+            Want to get in touch? Send me an email directly:
+          </p>
+
+          <a href="mailto:diego.bergia.03@gmail.com?subject=Contact%20from%20Portfolio"
+             class="btn btn-primary btn-xl">
+             <i class="fas fa-envelope me-2"></i> Send me an email
+          </a>
+
+          <p class="text-muted mt-3">
+            or visit my <a href="https://github.com/diegobergia03-italy" target="_blank" rel="noopener">GitHub</a> profile.
+          </p>
         </div>
       </div>
     </section>
@@ -285,8 +243,12 @@
           </div>
           <div class="col-lg-4 mb-5 mb-lg-0">
             <h4 class="text-uppercase mb-4">Around the Web</h4>
-            <a class="btn btn-outline-light btn-social mx-1" href="https://github.com/diegobergia03-italy" target="_blank" rel="noopener"><i class="fab fa-fw fa-github"></i></a>
-            <a class="btn btn-outline-light btn-social mx-1" href="mailto:youremail@example.com"><i class="fas fa-fw fa-envelope"></i></a>
+            <a class="btn btn-outline-light btn-social mx-1" href="https://github.com/diegobergia03-italy" target="_blank" rel="noopener">
+              <i class="fab fa-fw fa-github"></i>
+            </a>
+            <a class="btn btn-outline-light btn-social mx-1" href="mailto:diego.bergia.03@gmail.com">
+              <i class="fas fa-fw fa-envelope"></i>
+            </a>
           </div>
           <div class="col-lg-4">
             <h4 class="text-uppercase mb-4">About this site</h4>
@@ -304,6 +266,6 @@
     <!-- JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/scripts.js"></script>
-    <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+    <!-- Rimosso SB Forms perché non usiamo più il form -->
   </body>
 </html>
