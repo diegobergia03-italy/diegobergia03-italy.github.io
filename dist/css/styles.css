@@ -11255,4 +11255,11 @@ header.masthead {
 .footer a:hover {
   color: var(--bs-primary);
 }
-
+.masthead-avatar {
+  width: 240px;
+  height: 240px;
+  object-fit: cover;   /* riempie il cerchio centrando il volto */
+  border: 4px solid #fff;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  border-radius: 50%;
+}
