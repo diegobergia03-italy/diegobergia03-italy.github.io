@@ -10848,7 +10848,7 @@ html {
   width: 260px;                /* zoom: aumenta/diminuisci qui */
   aspect-ratio: 1 / 1;         /* mantiene proporzioni 1:1 */
   object-fit: cover;           /* riempie il cerchio */
-  object-position: center 30%; /* alza/abbassa il volto (25–35% = più su, 50% = più giù) */
+  object-position: center 85%; /* alza/abbassa il volto (25–35% = più su, 50% = più giù) */
   border-radius: 50%;          /* rotondo perfetto */
   border: 4px solid #fff;
   box-shadow: 0 8px 24px rgba(0,0,0,0.25);
