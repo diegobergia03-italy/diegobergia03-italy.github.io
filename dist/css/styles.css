@@ -11113,4 +11113,32 @@ header.masthead {
   justify-content: center;
   align-items: center;
 }
+/* === FIX Divider: layout orizzontale anche su mobile === */
+.divider-custom {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;            /* spazi tra linea–icona–linea */
+  flex-wrap: nowrap;    /* non andare a capo */
+}
+
+.divider-custom .divider-custom-line {
+  width: 7rem;          /* larghezza costante */
+  max-width: 7rem;
+  height: 0.25rem;
+  border-radius: 1rem;
+  background-color: var(--bs-primary);
+}
+
+.divider-custom .divider-custom-icon {
+  display: flex;        /* centra l’icona */
+  align-items: center;
+  line-height: 1;
+  color: var(--bs-primary);
+  font-size: 2rem;      /* puoi fare 1.6rem se la vuoi più piccola */
+}
+
+/* Variante su sfondo scuro */
+.divider-custom.divider-light .divider-custom-line { background-color: #fff; }
+.divider-custom.divider-light .divider-custom-icon { color: #fff; }
 
