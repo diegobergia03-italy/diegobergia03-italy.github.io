@@ -11259,7 +11259,7 @@ header.masthead {
   width: 240px;
   height: 240px;
   object-fit: cover;
-  object-position: center 25%; /* Sposta leggermente verso l’alto */
+  object-position: center 30%; /* Sposta leggermente verso l’alto */
   border: 4px solid #fff;
   border-radius: 50%;
   box-shadow: 0 0 15px rgba(0,0,0,0.3);
