@@ -11115,4 +11115,7 @@ html {
 #skills.visible .col-lg-3:nth-child(7) {
   animation-delay: 1.4s;
 }
-
+.masthead-avatar {
+  border: 4px solid white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
