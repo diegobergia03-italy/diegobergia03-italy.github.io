@@ -52,3 +52,15 @@ window.addEventListener('DOMContentLoaded', event => {
     });
 
 });
+// --- Show Skills section with fade-in on scroll ---
+window.addEventListener('scroll', () => {
+  const skillsSection = document.getElementById('skills');
+  if (!skillsSection) return;
+
+  const rect = skillsSection.getBoundingClientRect();
+  const isVisible = rect.top < window.innerHeight - 100;
+
+  if (isVisible) {
+    skillsSection.classList.add('visible');
+  }
+});
