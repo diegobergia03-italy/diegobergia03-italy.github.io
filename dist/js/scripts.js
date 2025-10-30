@@ -52,15 +52,28 @@ window.addEventListener('DOMContentLoaded', event => {
     });
 
 });
-// --- Show Skills section with fade-in on scroll ---
-window.addEventListener('scroll', () => {
+// --- Show/Hide Skills section to re-trigger animation on scroll ---
+(function () {
   const skillsSection = document.getElementById('skills');
   if (!skillsSection) return;
 
-  const rect = skillsSection.getBoundingClientRect();
-  const isVisible = rect.top < window.innerHeight - 100;
+  function onScroll() {
+    const rect = skillsSection.getBoundingClientRect();
 
-  if (isVisible) {
-    skillsSection.classList.add('visible');
+    // visibile se una parte consistente è nello schermo
+    const entering = rect.top < window.innerHeight - 100 && rect.bottom > 100;
+
+    if (entering) {
+      // entra in viewport -> aggiungo la classe per far partire l'animazione
+      skillsSection.classList.add('visible');
+    } else {
+      // esce dalla viewport -> la tolgo, così al prossimo ingresso riparte
+      skillsSection.classList.remove('visible');
+    }
   }
-});
+
+  // trigger iniziale + scroll/resize
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll);
+  onScroll();
+})();
