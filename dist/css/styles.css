@@ -11256,8 +11256,8 @@ header.masthead {
   color: var(--bs-primary);
 }
 .masthead-avatar {
-  width: 240px;
-  height: 240px;
+  width: 200px;
+  height: 200px;
   object-fit: cover;
   object-position: center 30%; /* Sposta leggermente verso l’alto */
   border: 4px solid #fff;
