@@ -10983,7 +10983,7 @@ html {
   width: 260px;                /* Zoom regolabile */
   aspect-ratio: 1 / 1;         /* mantiene proporzioni 1:1 */
   object-fit: cover;           /* riempie il cerchio */
-  object-position: center 70%; /* centra il volto un po’ più in alto */
+  object-position: center 99%; /* centra il volto un po’ più in alto */
   border-radius: 50%;          /* rotondo perfetto */
   border: 4px solid #fff;
   box-shadow: 0 8px 24px rgba(0,0,0,0.25);
