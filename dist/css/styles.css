@@ -11044,3 +11044,21 @@ html {
 .copyright {
   background-color: #1a252f;
 }
+/* --- Hover animation for Skills icons --- */
+#skills i {
+  transition: transform 0.3s ease, color 0.3s ease;
+  color: #0d6efd; /* blu principale del tema */
+}
+
+#skills i:hover {
+  transform: scale(1.15) rotate(-5deg);
+  color: #198754; /* verde bootstrap per il contrasto */
+}
+
+#skills h5 {
+  transition: color 0.3s ease;
+}
+
+#skills .col-md-4:hover h5 {
+  color: #198754;
+}
