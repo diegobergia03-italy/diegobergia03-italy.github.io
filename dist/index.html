@@ -46,7 +46,6 @@
         <img class="masthead-avatar mb-5"
              src="assets/profile.jpg?v=1"
              alt="Profile picture of Diego Bergia" />
-
         <h1 class="masthead-heading text-uppercase mb-0">Diego Bergia</h1>
 
         <!-- Divider with custom chip -->
@@ -132,48 +131,44 @@
       </div>
     </section>
 
- <!-- About -->
-<section class="page-section bg-primary text-white mb-0" id="about">
-  <div class="container">
-    <h2 class="page-section-heading text-center text-uppercase text-white">About Me</h2>
+    <!-- About -->
+    <section class="page-section bg-primary text-white mb-0" id="about">
+      <div class="container">
+        <h2 class="page-section-heading text-center text-uppercase text-white">About Me</h2>
 
-    <!-- Divider with custom chip -->
-    <div class="divider-custom divider-light my-3">
-      <div class="divider-custom-line"></div>
-      <div class="divider-custom-icon"><i class="fas fa-microchip"></i></div>
-      <div class="divider-custom-line"></div>
-    </div>
+        <div class="divider-custom divider-light my-3">
+          <div class="divider-custom-line"></div>
+          <div class="divider-custom-icon"><i class="fas fa-microchip"></i></div>
+          <div class="divider-custom-line"></div>
+        </div>
 
-    <div class="row justify-content-center">
-      <div class="col-lg-8">
+        <div class="row justify-content-center">
+          <div class="col-lg-8">
+            <h4 class="text-uppercase text-white mt-4">Who I Am</h4>
+            <p class="lead">
+              I’m <strong>Diego Bergia</strong>, an electronics and automation enthusiast who loves building things that move, react, and interact.
+              I enjoy experimenting with sensors, motors, and code to turn creative ideas into working prototypes.
+              My goal is to merge engineering precision with curiosity and design.
+            </p>
 
-        <h4 class="text-uppercase text-white mt-4">Who I Am</h4>
-        <p class="lead">
-          I’m <strong>Diego Bergia</strong>, an electronics and automation enthusiast who loves building things that move, react, and interact.  
-          I enjoy experimenting with sensors, motors, and code to turn creative ideas into working prototypes.  
-          My goal is to merge engineering precision with curiosity and design.
-        </p>
+            <h4 class="text-uppercase text-white mt-4">What I Do</h4>
+            <p class="lead">
+              I develop interactive systems that combine <strong>ESP32</strong>, <strong>Jetson Nano</strong> and <strong>3D printing</strong>.
+              My work often connects physical hardware with intelligent behavior — whether it’s automation setups,
+              escape room mechanisms, or smart devices reacting to people and the environment.
+            </p>
 
-        <h4 class="text-uppercase text-white mt-4">What I Do</h4>
-        <p class="lead">
-          I develop interactive systems that combine <strong>ESP32</strong>, <strong>Jetson Nano</strong> and <strong>3D printing</strong>.  
-          My work often connects physical hardware with intelligent behavior — whether it’s automation setups,  
-          escape room mechanisms, or smart devices reacting to people and the environment.
-        </p>
-
-        <h4 class="text-uppercase text-white mt-4">Tools & Skills</h4>
-        <p class="lead">
-          • <strong>Electronics:</strong> ESP32, Arduino, sensors, stepper drivers, relays<br>
-          • <strong>Software:</strong> SolidWorks, Bambu Studio, Python, C/C++<br>
-          • <strong>AI & Vision:</strong> Jetson Nano, OpenCV<br>
-          • <strong>Prototyping:</strong> 3D printing, wiring, testing, documentation
-        </p>
-
+            <h4 class="text-uppercase text-white mt-4">Tools & Skills</h4>
+            <p class="lead">
+              • <strong>Electronics:</strong> ESP32, Arduino, sensors, stepper drivers, relays<br>
+              • <strong>Software:</strong> SolidWorks, Bambu Studio, Python, C/C++<br>
+              • <strong>AI & Vision:</strong> Jetson Nano, OpenCV<br>
+              • <strong>Prototyping:</strong> 3D printing, wiring, testing, documentation
+            </p>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-</section>
-
+    </section>
 
     <!-- Skills -->
     <section class="page-section text-center" id="skills">
@@ -226,166 +221,112 @@
       </div>
     </section>
 
-<!-- Contact (with fallbacks) -->
-<section class="page-section" id="contact">
-  <div class="container">
-    <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Contact Me</h2>
+    <!-- Contact (chooser) -->
+    <section class="page-section" id="contact">
+      <div class="container">
+        <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Contact Me</h2>
 
-    <div class="divider-custom my-3">
-      <div class="divider-custom-line"></div>
-      <div class="divider-custom-icon"><i class="fas fa-microchip"></i></div>
-      <div class="divider-custom-line"></div>
-    </div>
+        <div class="divider-custom my-3">
+          <div class="divider-custom-line"></div>
+          <div class="divider-custom-icon"><i class="fas fa-microchip"></i></div>
+          <div class="divider-custom-line"></div>
+        </div>
 
-    <div class="text-center">
-      <p class="lead mb-4">
-        Choose how you prefer to contact me:
-      </p>
-
-      <!-- Primary: mailto (works if a default mail client is set) -->
-      <a href="mailto:diego.bergia.03@gmail.com?subject=Contact%20from%20Portfolio"
-         class="btn btn-primary btn-xl me-2 mb-2">
-        <i class="fas fa-envelope me-2"></i> Send me an email
-      </a>
-
-      <!-- Secondary: copy to clipboard (always works) -->
-      <button type="button" id="copyEmailBtn" class="btn btn-outline-secondary btn-xl mb-2">
-        <i class="fas fa-copy me-2"></i> Copy email address
-      </button>
-
-      <div class="mt-3">
-        <!-- Tertiary: Gmail Web (works in browser if user uses Gmail) -->
-        <a class="small"
-           href="https://mail.google.com/mail/?view=cm&fs=1&to=diego.bergia.03@gmail.com&su=Contact%20from%20Portfolio"
-           target="_blank" rel="noopener">
-          Or open Gmail compose in your browser →
-        </a>
-      </div>
-
-      <!-- Feedback area -->
-      <div id="contactHint" class="text-muted small mt-3" style="display:none;">
-        Email address copied: <span id="copiedEmail">diego.bergia.03@gmail.com</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<script>
-  (function(){
-    const copyBtn = document.getElementById('copyEmailBtn');
-    const hint = document.getElementById('contactHint');
-    const email = 'diego.bergia.03@gmail.com';
-
-    if (copyBtn) {
-      copyBtn.addEventListener('click', async () => {
-        try {
-          await navigator.clipboard.writeText(email);
-          hint.style.display = 'block';
-          // nascondi il messaggio dopo 3s
-          setTimeout(() => { hint.style.display = 'none'; }, 3000);
-        } catch (e) {
-          // fallback se Clipboard API non è disponibile
-          const ta = document.createElement('textarea');
-          ta.value = email;
-          document.body.appendChild(ta);
-          ta.select();
-          try { document.execCommand('copy'); } catch(_) {}
-          document.body.removeChild(ta);
-          hint.style.display = 'block';
-          setTimeout(() => { hint.style.display = 'none'; }, 3000);
-        }
-      });
-    }
-  })();
-</script>
-
-<!-- Footer -->
-<footer class="footer text-center py-5" style="background-color: #263238; color: #E3F2FD;">
-  <div class="container">
-    <div class="row">
-      <!-- Location -->
-      <div class="col-lg-4 mb-4 mb-lg-0">
-        <h5 class="text-uppercase fw-bold mb-3" style="font-size: 1.1rem;">Location</h5>
-        <p class="mb-0" style="font-size: 0.95rem;">Italy</p>
-      </div>
-
-      <!-- Social -->
-      <div class="col-lg-4 mb-4 mb-lg-0">
-        <h5 class="text-uppercase fw-bold mb-3" style="font-size: 1.1rem;">Around the Web</h5>
-        <div class="d-flex justify-content-center">
-          <a class="btn btn-outline-light btn-social mx-2" href="https://github.com/diegobergia03-italy" target="_blank" rel="noopener">
-            <i class="fab fa-fw fa-github"></i>
-          </a>
-          <a class="btn btn-outline-light btn-social mx-2" href="https://www.instagram.com/diegobergia03" target="_blank" rel="noopener">
-            <i class="fab fa-fw fa-instagram"></i>
-          </a>
-          <a class="btn btn-outline-light btn-social mx-2" href="https://www.linkedin.com/in/diego-bergia-5ba4b038a" target="_blank" rel="noopener">
-            <i class="fab fa-fw fa-linkedin"></i>
-          </a>
+        <div class="text-center">
+          <p class="lead mb-4">Choose how you prefer to contact me:</p>
+          <button class="btn btn-primary btn-xl" data-bs-toggle="modal" data-bs-target="#contactChooser">
+            <i class="fas fa-paper-plane me-2"></i> Contact me
+          </button>
+          <p class="text-muted mt-3">
+            You can also reach me on <a href="https://github.com/diegobergia03-italy" target="_blank" rel="noopener">GitHub</a>.
+          </p>
         </div>
       </div>
+    </section>
 
-      <!-- About -->
-      <div class="col-lg-4">
-        <h5 class="text-uppercase fw-bold mb-3" style="font-size: 1.1rem;">About this site</h5>
-        <p class="mb-0" style="font-size: 0.95rem;">Designed and developed by Diego Bergia.</p>
+    <!-- Contact chooser modal -->
+    <div class="modal fade" id="contactChooser" tabindex="-1" aria-labelledby="contactChooserLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+
+          <div class="modal-header">
+            <h5 class="modal-title" id="contactChooserLabel">Send an email to Diego</h5>
+            <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+
+          <div class="modal-body">
+            <div class="list-group">
+              <a class="list-group-item list-group-item-action d-flex align-items-center"
+                 target="_blank" rel="noopener"
+                 href="https://mail.google.com/mail/?view=cm&fs=1&to=diego.bergia.03@gmail.com&su=Contact%20from%20Portfolio">
+                <i class="fab fa-google me-3"></i> Open in Gmail (web)
+              </a>
+              <a class="list-group-item list-group-item-action d-flex align-items-center"
+                 target="_blank" rel="noopener"
+                 href="https://outlook.live.com/mail/0/deeplink/compose?to=diego.bergia.03@gmail.com&subject=Contact%20from%20Portfolio">
+                <i class="fab fa-microsoft me-3"></i> Open in Outlook (web)
+              </a>
+              <a class="list-group-item list-group-item-action d-flex align-items-center"
+                 target="_blank" rel="noopener"
+                 href="https://compose.mail.yahoo.com/?to=diego.bergia.03@gmail.com&subject=Contact%20from%20Portfolio">
+                <i class="fab fa-yahoo me-3"></i> Open in Yahoo Mail (web)
+              </a>
+              <a class="list-group-item list-group-item-action d-flex align-items-center"
+                 href="mailto:diego.bergia.03@gmail.com?subject=Contact%20from%20Portfolio">
+                <i class="fas fa-envelope me-3"></i> Open default mail app
+              </a>
+              <button class="list-group-item list-group-item-action d-flex align-items-center" id="copyEmailBtn">
+                <i class="fas fa-copy me-3"></i> Copy email address
+              </button>
+            </div>
+
+            <div id="copyFeedback" class="text-success small mt-3" style="display:none;">
+              Email copied: <strong>diego.bergia.03@gmail.com</strong>
+            </div>
+          </div>
+
+          <div class="modal-footer">
+            <button class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+
+        </div>
       </div>
     </div>
-  </div>
-</footer>
 
-<!-- Hover animation -->
-<style>
-  .btn-social {
-    width: 2.75rem;
-    height: 2.75rem;
-    border-radius: 50%;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
-  }
+    <!-- Footer -->
+    <footer class="footer text-center py-5" style="background-color: #263238; color: #E3F2FD;">
+      <div class="container">
+        <div class="row">
+          <!-- Location -->
+          <div class="col-lg-4 mb-4 mb-lg-0">
+            <h5 class="text-uppercase fw-bold mb-3" style="font-size: 1.1rem;">Location</h5>
+            <p class="mb-0" style="font-size: 0.95rem;">Italy</p>
+          </div>
 
-  .btn-social:hover {
-    transform: scale(1.15);
-    box-shadow: 0 0 12px rgba(255, 255, 255, 0.3);
-  }
+          <!-- Social -->
+          <div class="col-lg-4 mb-4 mb-lg-0">
+            <h5 class="text-uppercase fw-bold mb-3" style="font-size: 1.1rem;">Around the Web</h5>
+            <div class="d-flex justify-content-center">
+              <a class="btn btn-outline-light btn-social mx-2" href="https://github.com/diegobergia03-italy" target="_blank" rel="noopener">
+                <i class="fab fa-fw fa-github"></i>
+              </a>
+              <a class="btn btn-outline-light btn-social mx-2" href="https://www.instagram.com/diegobergia03" target="_blank" rel="noopener">
+                <i class="fab fa-fw fa-instagram"></i>
+              </a>
+              <a class="btn btn-outline-light btn-social mx-2" href="https://www.linkedin.com/in/diego-bergia-5ba4b038a" target="_blank" rel="noopener">
+                <i class="fab fa-fw fa-linkedin"></i>
+              </a>
+            </div>
+          </div>
 
-  footer h5 {
-    letter-spacing: 1px;
-  }
-</style>
-
-      <!-- About -->
-      <div class="col-lg-4">
-        <h5 class="text-uppercase fw-bold mb-3" style="font-size: 1.1rem;">About this site</h5>
-        <p class="mb-0" style="font-size: 0.95rem;">Designed and developed by Diego Bergia.</p>
+          <!-- About -->
+          <div class="col-lg-4">
+            <h5 class="text-uppercase fw-bold mb-3" style="font-size: 1.1rem;">About this site</h5>
+            <p class="mb-0" style="font-size: 0.95rem;">Designed and developed by Diego Bergia.</p>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-</footer>
-
-<!-- Optional footer hover animation -->
-<style>
-  .btn-social {
-    width: 2.75rem;
-    height: 2.75rem;
-    border-radius: 50%;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
-  }
-
-  .btn-social:hover {
-    transform: scale(1.15);
-    box-shadow: 0 0 12px rgba(255, 255, 255, 0.3);
-  }
-
-  footer h5 {
-    letter-spacing: 1px;
-  }
-</style>
+    </footer>
 
     <!-- Copyright -->
     <div class="copyright py-4 text-center text-white">
@@ -395,6 +336,60 @@
     <!-- JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/scripts.js"></script>
-    <!-- Rimosso SB Forms perché non usiamo più il form -->
+
+    <!-- Contact chooser script -->
+    <script>
+      (function(){
+        const btn = document.getElementById('copyEmailBtn');
+        const fb  = document.getElementById('copyFeedback');
+        const email = 'diego.bergia.03@gmail.com';
+
+        if (btn) {
+          btn.addEventListener('click', async () => {
+            try {
+              await navigator.clipboard.writeText(email);
+            } catch (err) {
+              const ta = document.createElement('textarea');
+              ta.value = email;
+              document.body.appendChild(ta);
+              ta.select();
+              try { document.execCommand('copy'); } catch (_) {}
+              document.body.removeChild(ta);
+            }
+            if (fb) {
+              fb.style.display = 'block';
+              setTimeout(() => { fb.style.display = 'none'; }, 2500);
+            }
+          });
+        }
+      })();
+    </script>
+
+    <!-- Optional modal styling -->
+    <style>
+      #contactChooser .list-group-item {
+        border: none;
+        border-radius: .5rem;
+        margin-bottom: .4rem;
+        box-shadow: 0 1px 0 rgba(0,0,0,.05);
+      }
+      #contactChooser .list-group-item:hover {
+        background: #E3F2FD;
+      }
+      .btn-social {
+        width: 2.75rem;
+        height: 2.75rem;
+        border-radius: 50%;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+      }
+      .btn-social:hover {
+        transform: scale(1.15);
+        box-shadow: 0 0 12px rgba(255, 255, 255, 0.3);
+      }
+      footer h5 { letter-spacing: 1px; }
+    </style>
   </body>
 </html>
