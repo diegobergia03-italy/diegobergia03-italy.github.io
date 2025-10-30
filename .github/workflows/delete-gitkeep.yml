@@ -1,0 +1,36 @@
+name: Delete .gitkeep(s) in assets
+on:
+  workflow_dispatch:
+
+jobs:
+  delete:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+
+      - name: Configure Git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Remove possible .gitkeep files
+        run: |
+          set -e
+          # Rimuovi senza errore se non esistono
+          git rm -f --ignore-unmatch dist/assets/.gitkeep
+          git rm -f --ignore-unmatch dist/assets/img/.gitkeep
+          git rm -f --ignore-unmatch dist/assets/img/icons/.gitkeep
+          # (opzionale) pulizia del vecchio file 'portfoglio' se ancora presente
+          git rm -f --ignore-unmatch dist/assets/portfoglio
+
+      - name: Commit if there are changes
+        run: |
+          if [ -n "$(git status --porcelain)" ]; then
+            git commit -m "Cleanup: remove .gitkeep from assets paths"
+            git push
+          else
+            echo "No changes to commit."
+          fi
