@@ -5,7 +5,10 @@ jobs:
   delete:
     runs-on: ubuntu-latest
     steps:
-      - name: Delete file
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Remove wrong file
         run: |
           git rm -f dist/assets/portfoglio || true
           git commit -m "Remove wrong portfoglio file"
