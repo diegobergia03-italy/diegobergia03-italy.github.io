@@ -11187,3 +11187,72 @@ header.masthead {
 .footer a:hover {
   color: var(--bs-primary);
 }
+/* === Custom Theme Colors: Tech Blue === */
+:root {
+  --bs-primary: #1976D2; /* Blu tecnico principale */
+  --bs-secondary: #263238; /* Grigio-blu scuro per contrasti */
+  --bs-light: #E3F2FD; /* Blu chiarissimo per sfondi leggeri */
+  --bs-dark: #0D47A1; /* Blu profondo per sezioni intense */
+}
+
+/* Colori personalizzati per gli elementi principali */
+.bg-primary {
+  background-color: var(--bs-primary) !important;
+}
+
+.text-primary {
+  color: var(--bs-primary) !important;
+}
+
+.btn-primary {
+  background-color: var(--bs-primary);
+  border-color: var(--bs-primary);
+}
+
+.btn-primary:hover {
+  background-color: var(--bs-dark);
+  border-color: var(--bs-dark);
+}
+
+/* --- Header Gradient --- */
+header.masthead {
+  background: linear-gradient(160deg, var(--bs-primary) 0%, var(--bs-dark) 100%);
+}
+
+/* --- Navbar personalizzata --- */
+#mainNav {
+  background-color: var(--bs-secondary);
+}
+
+#mainNav .navbar-brand,
+#mainNav .nav-link {
+  color: white !important;
+}
+
+#mainNav .nav-link:hover {
+  color: var(--bs-light) !important;
+}
+
+/* --- Divider (le linee con la stellina) --- */
+.divider-custom .divider-custom-line {
+  background-color: var(--bs-primary);
+}
+
+.divider-custom .divider-custom-icon {
+  color: var(--bs-primary);
+}
+
+/* --- Footer --- */
+.footer {
+  background-color: var(--bs-secondary);
+  color: white;
+}
+
+.footer a {
+  color: var(--bs-light);
+}
+
+.footer a:hover {
+  color: var(--bs-primary);
+}
+
