@@ -11281,4 +11281,12 @@ header.masthead {
 .divider-light .divider-chip {
   filter: brightness(0) invert(1); /* chip bianco per sezioni scure */
 }
+.masthead-avatar {
+  width: 180px; /* o la dimensione che preferisci */
+  height: 180px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center top;
+  margin-top: -15px;
+}
 
