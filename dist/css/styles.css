@@ -11270,4 +11270,15 @@ header.masthead {
 .masthead-avatar:hover {
   transform: scale(1.06);    /* piccolo zoom al passaggio, sempre rotondo */
 }
+/* Custom chip icon style */
+.divider-chip {
+  width: 28px;         /* dimensione icona */
+  height: auto;
+  opacity: 0.9;
+  filter: brightness(0);  /* chip nero per sezioni chiare */
+}
+
+.divider-light .divider-chip {
+  filter: brightness(0) invert(1); /* chip bianco per sezioni scure */
+}
 
