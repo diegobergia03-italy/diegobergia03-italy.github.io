@@ -255,41 +255,64 @@
     </section>
 
 <!-- Footer -->
-<footer class="footer text-center">
+<footer class="footer text-center py-5" style="background-color: #263238; color: #E3F2FD;">
   <div class="container">
     <div class="row">
       <!-- Location -->
-      <div class="col-lg-4 mb-5 mb-lg-0">
-        <h4 class="text-uppercase mb-4">Location</h4>
-        <p class="lead mb-0">Italy</p>
+      <div class="col-lg-4 mb-4 mb-lg-0">
+        <h5 class="text-uppercase fw-bold mb-3" style="font-size: 1.1rem;">Location</h5>
+        <p class="mb-0" style="font-size: 0.95rem;">Italy / Sweden</p>
       </div>
 
-      <!-- Social Links -->
-      <div class="col-lg-4 mb-5 mb-lg-0">
-        <h4 class="text-uppercase mb-4">Around the Web</h4>
-        <a class="btn btn-outline-light btn-social mx-1" href="https://github.com/diegobergia03-italy" target="_blank" rel="noopener">
-          <i class="fab fa-fw fa-github"></i>
-        </a>
-        <a class="btn btn-outline-light btn-social mx-1" href="mailto:diego.bergia.03@gmail.com">
-          <i class="fas fa-fw fa-envelope"></i>
-        </a>
-        <a class="btn btn-outline-light btn-social mx-1" href="https://www.instagram.com/diegobergia" target="_blank" rel="noopener">
-          <i class="fab fa-fw fa-instagram"></i>
-        </a>
-        <a class="btn btn-outline-light btn-social mx-1" href="https://www.linkedin.com/in/diego-bergia-5ba4b038a" target="_blank" rel="noopener">
-          <i class="fab fa-fw fa-linkedin"></i>
-        </a>
+      <!-- Social -->
+      <div class="col-lg-4 mb-4 mb-lg-0">
+        <h5 class="text-uppercase fw-bold mb-3" style="font-size: 1.1rem;">Around the Web</h5>
+        <div class="d-flex justify-content-center">
+          <a class="btn btn-outline-light btn-social mx-2" href="https://github.com/diegobergia03-italy" target="_blank" rel="noopener">
+            <i class="fab fa-fw fa-github"></i>
+          </a>
+          <a class="btn btn-outline-light btn-social mx-2" href="mailto:diego.bergia.03@gmail.com">
+            <i class="fas fa-fw fa-envelope"></i>
+          </a>
+          <a class="btn btn-outline-light btn-social mx-2" href="https://www.instagram.com/diegobergia03" target="_blank" rel="noopener">
+            <i class="fab fa-fw fa-instagram"></i>
+          </a>
+          <a class="btn btn-outline-light btn-social mx-2" href="https://www.linkedin.com/in/diego-bergia-5ba4b038a" target="_blank" rel="noopener">
+            <i class="fab fa-fw fa-linkedin"></i>
+          </a>
+        </div>
       </div>
 
       <!-- About -->
       <div class="col-lg-4">
-        <h4 class="text-uppercase mb-4">About this site</h4>
-        <p class="lead mb-0">Designed and developed by Diego Bergia.</p>
+        <h5 class="text-uppercase fw-bold mb-3" style="font-size: 1.1rem;">About this site</h5>
+        <p class="mb-0" style="font-size: 0.95rem;">Designed and developed by Diego Bergia.</p>
       </div>
     </div>
   </div>
 </footer>
 
+<!-- Optional footer hover animation -->
+<style>
+  .btn-social {
+    width: 2.75rem;
+    height: 2.75rem;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  .btn-social:hover {
+    transform: scale(1.15);
+    box-shadow: 0 0 12px rgba(255, 255, 255, 0.3);
+  }
+
+  footer h5 {
+    letter-spacing: 1px;
+  }
+</style>
 
     <!-- Copyright -->
     <div class="copyright py-4 text-center text-white">
