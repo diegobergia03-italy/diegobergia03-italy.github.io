@@ -11141,19 +11141,12 @@ header.masthead {
 /* Variante su sfondo scuro */
 .divider-custom.divider-light .divider-custom-line { background-color: #fff; }
 .divider-custom.divider-light .divider-custom-icon { color: #fff; }
-/* --- CV Section Styles --- */
-#cv img {
-  border: 3px solid rgba(0, 0, 0, 0.05);
-  transition: transform 0.3s ease;
-}
-#cv img:hover {
-  transform: scale(1.03);
-}
+/* CV Section */
 #cv .btn {
+  min-width: 180px;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 #cv .btn:hover {
   transform: scale(1.05);
-  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
-
