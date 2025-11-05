@@ -11150,3 +11150,15 @@ header.masthead {
   transform: scale(1.05);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
+.portfolio-item {
+  position: relative; display: block; overflow: hidden; border-radius: .5rem;
+}
+.portfolio-item img { transition: transform .3s ease; }
+.portfolio-item:hover img { transform: scale(1.05); }
+.portfolio-item-caption {
+  position: absolute; top:0; left:0; width:100%; height:100%;
+  background: rgba(0,0,0,.55); opacity:0; transition: opacity .25s ease;
+}
+.portfolio-item:hover .portfolio-item-caption { opacity:1; }
+.portfolio-item-caption h3, .portfolio-item-caption small { color:#fff; }
+
