@@ -4,7 +4,7 @@
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>ESP32 Weather Station — Project</title>
-  <meta name="description" content="Mini stazione meteo con ESP32: modello 3D ruotabile, cablaggio e codice, galleria foto.">
+  <meta name="description" content="Mini stazione meteo con ESP32: modello 3D ruotabile, cablaggio e foto reali.">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
   <link href="css/styles.css" rel="stylesheet"/>
 
@@ -18,9 +18,8 @@
     pre.codebox {
       background:#0f172a; color:#e2e8f0; padding:1rem; border-radius:.5rem; overflow:auto; font-size:.95rem;
     }
-    .gallery-grid { display:grid; grid-template-columns: repeat(3, 1fr); gap: .75rem; }
-    @media (max-width: 992px) { .gallery-grid { grid-template-columns: repeat(2, 1fr); } }
-    @media (max-width: 576px) { .gallery-grid { grid-template-columns: 1fr; } }
+    .gallery-grid { display:grid; grid-template-columns: repeat(2, 1fr); gap: .75rem; }
+    @media (max-width: 768px) { .gallery-grid { grid-template-columns: 1fr; } }
     .gallery-grid img { width:100%; height:auto; border-radius:.5rem; }
     model-viewer { width:100%; height:520px; background: #f8fafc; border-radius:.5rem; }
   </style>
@@ -36,7 +35,7 @@
 <header class="py-5 bg-primary text-white text-center">
   <div class="container">
     <h1 class="mb-3">ESP32 Weather Station</h1>
-    <p class="lead mb-3">Modello 3D ruotabile, cablaggio + codice, galleria del prototipo reale.</p>
+    <p class="lead mb-3">Modello 3D ruotabile, schema su Tinkercad e galleria del progetto reale.</p>
     <div class="mt-3">
       <a class="btn btn-light btn-sm me-2" target="_blank" rel="noopener" href="https://github.com/diegobergia03-italy/esp32-weather-station">
         <i class="fab fa-github me-1"></i> View on GitHub
@@ -52,29 +51,28 @@
     <h2 class="h4 mb-3">3D Model (rotate me)</h2>
     <model-viewer
       src="assets/3d/esp32-case.glb"
-      poster="assets/img/portfolio/esp32-case.jpg"
+      poster="assets/img/portfolio/esp32-thumb.jpeg"
       camera-controls
       auto-rotate
       touch-action="pan-y"
       exposure="1.1"
       alt="3D model of the ESP32 weather station enclosure">
-      <!-- Fallback semplice se il browser non supporta -->
       <div class="text-center p-4">Your browser can’t display the 3D model. Download: <a href="assets/3d/esp32-case.glb" download>esp32-case.glb</a></div>
     </model-viewer>
-    <p class="text-muted small mt-2">Suggerimento: con il mouse trascina per ruotare, rotella per zoom, doppio click per mettere a fuoco.</p>
+    <p class="text-muted small mt-2">Suggerimento: trascina per ruotare, rotella per zoom, doppio click per mettere a fuoco.</p>
   </section>
 
-  <!-- WIRING + CODE affiancati -->
+  <!-- WIRING + CODE -->
   <section class="mb-5">
     <h2 class="h4 mb-3">Wiring & Code</h2>
     <div class="two-col">
       <!-- Screenshot Tinkercad -->
       <div>
-        <img src="assets/img/portfolio/esp32-wiring-tinkercad.jpg" alt="Tinkercad wiring screenshot" class="img-fluid rounded shadow-sm">
+        <img src="assets/img/portfolio/esp32-wiring-tinkercad.jpeg" alt="Tinkercad wiring screenshot" class="img-fluid rounded shadow-sm">
         <p class="text-muted small mt-2">Schema rifatto su Tinkercad per chiarezza (ESP32 + sensore).</p>
       </div>
 
-      <!-- Codice: incolla quello reale qui -->
+      <!-- Codice -->
       <div>
         <pre class="codebox"><code>// Esempio (sostituisci con il tuo codice reale)
 #include &lt;Arduino.h&gt;
@@ -102,26 +100,23 @@ void loop() {
     </div>
   </section>
 
-  <!-- GALLERIA FOTO REALI -->
+  <!-- GALLERIA FOTO -->
   <section class="mb-5">
     <h2 class="h4 mb-3">Photo Gallery</h2>
     <div class="gallery-grid">
-      <img src="assets/img/portfolio/esp32-case.jpg" alt="Case 3D assemblato">
-      <img src="assets/img/portfolio/esp32-open.jpg" alt="Case aperto - interno">
-      <img src="assets/img/portfolio/esp32-sensor.jpg" alt="Dettaglio sensore">
-      <img src="assets/img/portfolio/esp32-serial.jpg" alt="Screenshot monitor seriale">
-      <img src="assets/img/portfolio/esp32-cad.jpg" alt="Render/Schermata SolidWorks">
-      <img src="assets/img/portfolio/esp32-assembly.jpg" alt="Vista assemblaggio (top + bottom)">
+      <img src="assets/img/portfolio/esp32-thumb.jpeg" alt="Project cover - ESP32 weather sensor">
+      <img src="assets/img/portfolio/esp32-front.jpeg" alt="Sensor front view">
+      <img src="assets/img/portfolio/esp32-back.jpeg" alt="Sensor back view">
+      <img src="assets/img/portfolio/esp32-wiring.jpeg" alt="Full wiring photo">
     </div>
   </section>
 
-  <!-- Download (STL, CAD) -->
+  <!-- DOWNLOAD -->
   <section class="mb-4">
     <h2 class="h4 mb-3">Downloads</h2>
     <ul class="list-unstyled">
       <li><a href="assets/stl/esp32-case-top.stl" download>Top part (.stl)</a></li>
       <li><a href="assets/stl/esp32-case-bottom.stl" download>Bottom part (.stl)</a></li>
-      <li><a href="assets/cad/esp32-case-assembly.zip" download>SolidWorks assembly (.zip)</a></li>
       <li><a href="assets/3d/esp32-case.glb" download>3D model (.glb)</a></li>
     </ul>
   </section>
