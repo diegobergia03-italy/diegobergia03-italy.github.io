@@ -11,81 +11,34 @@
 
   <style>
     .section-narrow { max-width: 980px; margin: 0 auto; }
-
-    pre.codebox {
-      background:#0f172a; color:#e2e8f0; padding:1rem;
-      border-radius:.5rem; overflow-x:auto; overflow-y:auto;
-      font-size:.95rem; line-height:1.4; white-space:pre;
-      max-height:520px;
+    pre.codebox{
+      background:#0f172a;color:#e2e8f0;padding:1rem;border-radius:.5rem;overflow:auto;
+      font-size:.95rem;line-height:1.4;max-height:520px;white-space:pre;
     }
-    @media (max-width: 768px){
-      pre.codebox { font-size:.72rem; padding:.65rem; max-height:240px; }
-    }
+    @media (max-width:768px){ pre.codebox{font-size:.72rem;padding:.65rem;max-height:240px;} }
 
     model-viewer{
-      width:100%; height:320px; background:#f8fafc; border-radius:.5rem; display:block;
-      --poster-color: transparent;
+      width:100%;height:320px;background:#f8fafc;border-radius:.5rem;display:block;--poster-color:transparent;
     }
-    @media (max-width: 768px){ model-viewer{ height:240px; } }
+    @media (max-width:768px){ model-viewer{ height:240px; } }
 
-    img, video {
-      max-width:100%; height:auto; display:block; border-radius:.5rem;
-      cursor:pointer; object-fit:cover;
-    }
+    img, video{ max-width:100%; height:auto; display:block; border-radius:.5rem; cursor:pointer; object-fit:cover; }
+    section{ margin-bottom:2.25rem; } @media (max-width:768px){ section{ margin-bottom:1.35rem; } }
 
-    section { margin-bottom:2.25rem; }
-    @media (max-width: 768px){ section{ margin-bottom:1.35rem; } }
-
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 1rem;
-    }
+    /* Galleria griglia */
+    .gallery-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:1rem; }
 
     /* Lightbox */
-    .lightbox {
-      display: none;
-      position: fixed;
-      z-index: 1050;
-      top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(0,0,0,0.9);
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-    }
-    .lightbox.active { display: flex; }
-    .lightbox img, .lightbox video {
-      max-width: 90%;
-      max-height: 80vh;
-      object-fit: contain;
-      border-radius: .5rem;
-      box-shadow: 0 0 20px rgba(255,255,255,0.2);
-    }
-    .lightbox button {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      background: rgba(255,255,255,0.3);
-      border: none;
-      color: white;
-      font-size: 2rem;
-      padding: .5rem .9rem;
-      border-radius: 50%;
-      cursor: pointer;
-      transition: background 0.2s;
-    }
-    .lightbox button:hover { background: rgba(255,255,255,0.6); }
-    .lightbox .prev { left: 5%; }
-    .lightbox .next { right: 5%; }
-    .lightbox .close {
-      top: 5%;
-      right: 5%;
-      transform: none;
-      font-size: 1.8rem;
-    }
+    .lightbox{ display:none; position:fixed; z-index:1050; inset:0; background:rgba(0,0,0,.9);
+               justify-content:center; align-items:center; flex-direction:column; }
+    .lightbox.active{ display:flex; }
+    .lightbox img, .lightbox video{ max-width:90%; max-height:80vh; object-fit:contain; border-radius:.5rem; box-shadow:0 0 20px rgba(255,255,255,.2); }
+    .lightbox button{ position:absolute; top:50%; transform:translateY(-50%); background:rgba(255,255,255,.3);
+                      border:none; color:#fff; font-size:2rem; padding:.5rem .9rem; border-radius:50%; cursor:pointer; }
+    .lightbox .prev{ left:5%; } .lightbox .next{ right:5%; }
+    .lightbox .close{ top:5%; right:5%; transform:none; font-size:1.8rem; }
   </style>
 </head>
-
 <body>
 <nav class="navbar navbar-expand-lg bg-secondary text-uppercase">
   <div class="container">
@@ -112,21 +65,22 @@
     <model-viewer
       src="assets/3d/esp32-case.glb"
       poster="assets/img/portfolio/esp32-thumb.jpeg"
-      camera-controls
-      auto-rotate
-      reveal="auto"
-      crossorigin="anonymous"
+      camera-controls auto-rotate reveal="auto" crossorigin="anonymous"
       interaction-policy="allow-when-focused"
       alt="3D model of the ESP32 weather station enclosure">
     </model-viewer>
   </section>
 
-  <!-- GALLERY -->
+  <!-- GALLERY (video per primo, foto di copertina rimossa) -->
   <section class="section-narrow">
     <h2 class="h4 mb-3">Photo & Video Gallery</h2>
     <div class="gallery-grid">
-      <video src="assets/video/esp32-demo.mp4" playsinline muted preload="metadata"></video>
-      <img src="assets/img/portfolio/esp32-thumb.jpeg" alt="Project cover">
+      <!-- Video anteprima: autoplay + loop + muted + playsinline -->
+      <video playsinline muted autoplay loop preload="metadata" poster="assets/img/portfolio/esp32-front.jpeg">
+        <source src="assets/video/esp32-demo.mp4" type="video/mp4">
+      </video>
+
+      <!-- Niente esp32-thumb.jpeg qui: resta solo come cover nel portfolio -->
       <img src="assets/img/portfolio/esp32-front.jpeg" alt="Front view">
       <img src="assets/img/portfolio/esp32-back.jpeg" alt="Back view">
       <img src="assets/img/portfolio/esp32-wiring.jpeg" alt="Wiring photo">
@@ -137,7 +91,8 @@
   <div class="lightbox" id="lightbox">
     <button class="prev">&#10094;</button>
     <img src="" alt="Expanded media" id="lightbox-img">
-    <video id="lightbox-video" controls playsinline></video>
+    <!-- Video in lightbox: autoplay+loop+muted (sempre muto) -->
+    <video id="lightbox-video" controls playsinline muted loop></video>
     <button class="next">&#10095;</button>
     <button class="close">&times;</button>
   </div>
@@ -178,7 +133,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js"></script>
 
-<!-- Lightbox Script (foto + video) -->
+<!-- Lightbox Script (foto + video, video sempre muto in autoplay/loop) -->
 <script>
   const lightbox = document.getElementById('lightbox');
   const imgBox = document.getElementById('lightbox-img');
@@ -187,51 +142,31 @@
   let current = 0;
 
   mediaItems.forEach((el, i) => {
-    el.addEventListener('click', () => {
-      current = i;
-      openLightbox();
-    });
+    el.addEventListener('click', () => { current = i; openLightbox(); });
   });
 
-  function openLightbox(){
-    lightbox.classList.add('active');
-    showCurrent();
-  }
+  function openLightbox(){ lightbox.classList.add('active'); showCurrent(); }
 
   function showCurrent(){
     const el = mediaItems[current];
     if (el.tagName === 'IMG') {
-      videoBox.style.display = 'none';
-      imgBox.style.display = 'block';
-      imgBox.src = el.src;
-      videoBox.pause();
+      videoBox.pause(); videoBox.removeAttribute('src'); videoBox.load();
+      videoBox.style.display = 'none'; imgBox.style.display = 'block'; imgBox.src = el.src;
     } else {
-      imgBox.style.display = 'none';
+      imgBox.removeAttribute('src'); imgBox.style.display = 'none';
       videoBox.style.display = 'block';
-      videoBox.src = el.src;
-      videoBox.muted = false;
-      videoBox.play();
+      videoBox.src = el.querySelector('source') ? el.querySelector('source').src : el.src;
+      videoBox.muted = true; videoBox.loop = true; videoBox.play().catch(()=>{});
     }
   }
 
-  document.querySelector('.lightbox .close').onclick = () => {
-    lightbox.classList.remove('active');
-    videoBox.pause();
-  };
-  document.querySelector('.lightbox .prev').onclick = () => change(-1);
-  document.querySelector('.lightbox .next').onclick = () => change(1);
+  document.querySelector('.lightbox .close').onclick = () => { lightbox.classList.remove('active'); videoBox.pause(); };
+  document.querySelector('.lightbox .prev').onclick  = () => change(-1);
+  document.querySelector('.lightbox .next').onclick  = () => change(1);
 
-  function change(dir){
-    current = (current + dir + mediaItems.length) % mediaItems.length;
-    showCurrent();
-  }
+  function change(dir){ current = (current + dir + mediaItems.length) % mediaItems.length; showCurrent(); }
 
-  lightbox.addEventListener('click', e => {
-    if(e.target === lightbox) {
-      lightbox.classList.remove('active');
-      videoBox.pause();
-    }
-  });
+  lightbox.addEventListener('click', e => { if (e.target === lightbox) { lightbox.classList.remove('active'); videoBox.pause(); } });
 </script>
 
 <!-- Caricamento codice Arduino -->
@@ -248,6 +183,5 @@
     }
   })();
 </script>
-
 </body>
 </html>
