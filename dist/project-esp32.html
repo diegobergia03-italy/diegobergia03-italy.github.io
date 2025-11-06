@@ -22,9 +22,11 @@
       pre.codebox { font-size:.72rem; padding:.65rem; max-height:240px; }
     }
 
+    /* 3D viewer: più compatto su desktop; zoom con rotellina quando è in focus */
     model-viewer{
       width:100%; height:320px; background:#f8fafc; border-radius:.5rem; display:block;
       --poster-color: transparent;
+      outline: none;
     }
     @media (max-width: 768px){ model-viewer{ height:240px; } }
 
@@ -33,6 +35,7 @@
     section { margin-bottom:2.25rem; }
     @media (max-width: 768px){ section{ margin-bottom:1.35rem; } }
 
+    /* Galleria: più piccola su desktop, centrata, altezza limitata */
     .carousel-slim { max-width: 900px; margin: 0 auto; }
     .carousel-slim .carousel-item img { width:100%; max-height:420px; object-fit:contain; }
     @media (min-width:1200px){
@@ -43,6 +46,22 @@
 
     .wire-img { width:100%; height:auto; }
     @media (max-width:768px){ .wire-img { max-height: 220px; object-fit: contain; } }
+
+    /* Frecce visibili su qualsiasi foto */
+    .carousel-control-prev, .carousel-control-next {
+      width: 3rem;
+    }
+    .carousel-control-prev-icon, .carousel-control-next-icon{
+      filter: invert(1) brightness(0); /* da bianco → nero */
+      background-color: rgba(255,255,255,0.85); /* “pill” chiara */
+      border-radius: 50%;
+      padding: .75rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,.25);
+    }
+    .carousel-control-prev:hover .carousel-control-prev-icon,
+    .carousel-control-next:hover .carousel-control-next-icon{
+      background-color: rgba(255,255,255,1);
+    }
   </style>
 </head>
 
@@ -76,8 +95,7 @@
       auto-rotate
       reveal="auto"
       crossorigin="anonymous"
-      interaction-policy="allow-when-focused"
-      disable-zoom
+      interaction-policy="allow-when-focused"  <!-- ruota/zoom solo dopo click -->
       touch-action="pan-y"
       alt="3D model of the ESP32 weather station enclosure">
     </model-viewer>
