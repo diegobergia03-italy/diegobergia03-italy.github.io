@@ -4,7 +4,7 @@
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>ESP32 Weather Station — Project</title>
-  <meta name="description" content="Mini stazione meteo con ESP32: modello 3D ruotabile, galleria foto e codice Arduino.">
+  <meta name="description" content="Mini stazione meteo con ESP32: modello 3D ruotabile, galleria foto, schema e codice Arduino.">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
   <link href="css/styles.css" rel="stylesheet"/>
   <script type="module" src="https://cdn.jsdelivr.net/npm/@google/model-viewer@3.4.0/dist/model-viewer.min.js"></script>
@@ -12,10 +12,6 @@
   <style>
     /* Contenitori più stretti dove serve */
     .section-narrow { max-width: 980px; margin: 0 auto; }
-
-    /* Due colonne */
-    .two-col { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
-    @media (max-width: 992px){ .two-col { grid-template-columns:1fr; } }
 
     /* Code box */
     pre.codebox {
@@ -42,20 +38,20 @@
     section { margin-bottom:2.25rem; }
     @media (max-width: 768px){ section{ margin-bottom:1.35rem; } }
 
-    /* Galleria: più piccola su desktop, centrata, altezza limitata */
+    /* Galleria */
     .carousel-slim { max-width: 900px; margin: 0 auto; }
     .carousel-slim .carousel-item img {
       width:100%; max-height:420px; object-fit:contain;
     }
     @media (min-width:1200px){
-      .carousel-slim { max-width: 840px; } /* ancora un pelo più stretta su schermi grandi */
+      .carousel-slim { max-width: 840px; }
       .carousel-slim .carousel-item img { max-height: 380px; }
     }
     @media (max-width: 768px){
       .carousel-slim .carousel-item img { max-height: 240px; }
     }
 
-    /* Wiring image: più compatta su mobile */
+    /* Wiring image */
     .wire-img { width:100%; height:auto; }
     @media (max-width:768px){
       .wire-img { max-height: 220px; object-fit: contain; }
@@ -73,7 +69,7 @@
 <header class="py-5 bg-primary text-white text-center">
   <div class="container">
     <h1 class="mb-3">ESP32 Weather Station</h1>
-    <p class="lead mb-3">Modello 3D ruotabile, galleria foto e codice Arduino.</p>
+    <p class="lead mb-3">Modello 3D ruotabile, galleria foto, schema e codice Arduino.</p>
     <div class="mt-3">
       <a class="btn btn-light btn-sm me-2" target="_blank" rel="noopener" href="https://github.com/diegobergia03-italy/esp32-weather-station">
         <i class="fab fa-github me-1"></i> View on GitHub
@@ -99,7 +95,7 @@
     </model-viewer>
   </section>
 
-  <!-- GALLERIA FOTO (più piccola su desktop) -->
+  <!-- GALLERIA FOTO -->
   <section class="section-narrow">
     <h2 class="h4 mb-3">Photo Gallery</h2>
     <div id="galleryPhotos" class="carousel slide carousel-slim" data-bs-ride="carousel" data-bs-touch="true">
@@ -134,21 +130,20 @@
     </div>
   </section>
 
-  <!-- WIRING + CODE (più compatto su mobile) -->
+  <!-- WIRING -->
   <section class="section-narrow">
-    <h2 class="h4 mb-3">Wiring & Code</h2>
-    <div class="two-col">
-      <div>
-        <img src="assets/img/portfolio/esp32-wiring-tinkercad.jpeg" alt="Tinkercad wiring screenshot" class="shadow-sm wire-img">
-      </div>
-      <div>
-        <div class="d-flex justify-content-between align-items-center mb-2">
-          <h3 class="h6 m-0">Arduino Code</h3>
-          <a class="btn btn-sm btn-outline-secondary" target="_blank" rel="noopener" href="assets/code/esp32-weather-station.ino">Apri file</a>
-        </div>
-        <pre class="codebox"><code id="code-esp32">// Caricamento...</code></pre>
-      </div>
+    <h2 class="h4 mb-3">Wiring</h2>
+    <img src="assets/img/portfolio/esp32-wiring-tinkercad.jpeg" alt="Tinkercad wiring screenshot" class="shadow-sm wire-img">
+  </section>
+
+  <!-- CODE -->
+  <section class="section-narrow">
+    <h2 class="h4 mb-3">Code</h2>
+    <div class="d-flex justify-content-between align-items-center mb-2">
+      <h3 class="h6 m-0">Arduino Code</h3>
+      <a class="btn btn-sm btn-outline-secondary" target="_blank" rel="noopener" href="assets/code/esp32-weather-station.ino">Apri file</a>
     </div>
+    <pre class="codebox"><code id="code-esp32">// Caricamento...</code></pre>
   </section>
 
   <!-- DOWNLOAD STL -->
