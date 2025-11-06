@@ -24,9 +24,9 @@
       pre.codebox { font-size:.72rem; padding:.65rem; max-height:240px; }
     }
 
-    /* 3D viewer */
+    /* 3D viewer: meno alto su desktop; ancora più compatto su mobile */
     model-viewer{
-      width:100%; height:380px; background:#f8fafc; border-radius:.5rem; display:block;
+      width:100%; height:320px; background:#f8fafc; border-radius:.5rem; display:block;
       --poster-color: transparent;
     }
     @media (max-width: 768px){ model-viewer{ height:240px; } }
@@ -38,7 +38,7 @@
     section { margin-bottom:2.25rem; }
     @media (max-width: 768px){ section{ margin-bottom:1.35rem; } }
 
-    /* Galleria */
+    /* Galleria: più piccola su desktop, centrata, altezza limitata */
     .carousel-slim { max-width: 900px; margin: 0 auto; }
     .carousel-slim .carousel-item img {
       width:100%; max-height:420px; object-fit:contain;
@@ -51,7 +51,7 @@
       .carousel-slim .carousel-item img { max-height: 240px; }
     }
 
-    /* Wiring image */
+    /* Wiring image: più compatta su mobile */
     .wire-img { width:100%; height:auto; }
     @media (max-width:768px){
       .wire-img { max-height: 220px; object-fit: contain; }
@@ -80,7 +80,7 @@
 
 <main class="container my-4">
 
-  <!-- 3D MODEL -->
+  <!-- 3D MODEL (scroll page-friendly su desktop) -->
   <section class="section-narrow">
     <h2 class="h4 mb-3">3D Model (rotate me)</h2>
     <model-viewer
@@ -90,6 +90,8 @@
       auto-rotate
       reveal="auto"
       crossorigin="anonymous"
+      interaction-policy="allow-when-focused"
+      disable-zoom
       touch-action="pan-y"
       alt="3D model of the ESP32 weather station enclosure">
     </model-viewer>
