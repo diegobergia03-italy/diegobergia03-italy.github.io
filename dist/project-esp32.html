@@ -28,7 +28,9 @@
     }
     @media (max-width: 768px){ model-viewer{ height:240px; } }
 
-    img, canvas, video { max-width:100%; height:auto; display:block; border-radius:.5rem; cursor:pointer; }
+    img, video, canvas {
+      max-width:100%; height:auto; display:block; border-radius:.5rem; cursor:pointer;
+    }
 
     section { margin-bottom:2.25rem; }
     @media (max-width: 768px){ section{ margin-bottom:1.35rem; } }
@@ -52,7 +54,7 @@
       flex-direction: column;
     }
     .lightbox.active { display: flex; }
-    .lightbox img {
+    .lightbox img, .lightbox video {
       max-width: 90%;
       max-height: 80vh;
       object-fit: contain;
@@ -81,7 +83,6 @@
       transform: none;
       font-size: 1.8rem;
     }
-
   </style>
 </head>
 
@@ -96,7 +97,7 @@
   <div class="container">
     <h1 class="mb-2">ESP32 Weather Station</h1>
     <p class="lead mb-0">
-      Piccola stazione meteo basata su ESP32, capace di misurare temperatura e umidità tramite sensore DHT11
+      Piccola stazione meteo basata su ESP32, capace di misurare temperatura e umidità tramite sensore DHT22
       e mostrare i dati su un display OLED. Il tutto è racchiuso in un case progettato su SolidWorks e stampato
       in 3D, con prese d’aria per una lettura accurata.
     </p>
@@ -122,19 +123,21 @@
 
   <!-- GALLERY -->
   <section class="section-narrow">
-    <h2 class="h4 mb-3">Photo Gallery</h2>
+    <h2 class="h4 mb-3">Photo & Video Gallery</h2>
     <div class="gallery-grid">
       <img src="assets/img/portfolio/esp32-thumb.jpeg" alt="Project cover">
       <img src="assets/img/portfolio/esp32-front.jpeg" alt="Front view">
       <img src="assets/img/portfolio/esp32-back.jpeg" alt="Back view">
       <img src="assets/img/portfolio/esp32-wiring.jpeg" alt="Wiring photo">
+      <video src="assets/video/esp32-demo.mp4" muted></video>
     </div>
   </section>
 
   <!-- LIGHTBOX -->
   <div class="lightbox" id="lightbox">
     <button class="prev">&#10094;</button>
-    <img src="" alt="Expanded photo" id="lightbox-img">
+    <img src="" alt="Expanded media" id="lightbox-img">
+    <video id="lightbox-video" controls></video>
     <button class="next">&#10095;</button>
     <button class="close">&times;</button>
   </div>
@@ -175,15 +178,16 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js"></script>
 
-<!-- Lightbox Script -->
+<!-- Lightbox Script (supporta anche video) -->
 <script>
   const lightbox = document.getElementById('lightbox');
-  const lightboxImg = document.getElementById('lightbox-img');
-  const gallery = document.querySelectorAll('.gallery-grid img');
+  const imgBox = document.getElementById('lightbox-img');
+  const videoBox = document.getElementById('lightbox-video');
+  const mediaItems = document.querySelectorAll('.gallery-grid img, .gallery-grid video');
   let current = 0;
 
-  gallery.forEach((img, i) => {
-    img.addEventListener('click', () => {
+  mediaItems.forEach((el, i) => {
+    el.addEventListener('click', () => {
       current = i;
       openLightbox();
     });
@@ -191,20 +195,41 @@
 
   function openLightbox(){
     lightbox.classList.add('active');
-    lightboxImg.src = gallery[current].src;
+    showCurrent();
   }
 
-  document.querySelector('.lightbox .close').onclick = () => lightbox.classList.remove('active');
+  function showCurrent(){
+    const el = mediaItems[current];
+    if (el.tagName === 'IMG') {
+      videoBox.style.display = 'none';
+      imgBox.style.display = 'block';
+      imgBox.src = el.src;
+      videoBox.pause();
+    } else {
+      imgBox.style.display = 'none';
+      videoBox.style.display = 'block';
+      videoBox.src = el.src;
+      videoBox.play();
+    }
+  }
+
+  document.querySelector('.lightbox .close').onclick = () => {
+    lightbox.classList.remove('active');
+    videoBox.pause();
+  };
   document.querySelector('.lightbox .prev').onclick = () => change(-1);
   document.querySelector('.lightbox .next').onclick = () => change(1);
 
   function change(dir){
-    current = (current + dir + gallery.length) % gallery.length;
-    lightboxImg.src = gallery[current].src;
+    current = (current + dir + mediaItems.length) % mediaItems.length;
+    showCurrent();
   }
 
   lightbox.addEventListener('click', e => {
-    if(e.target === lightbox) lightbox.classList.remove('active');
+    if(e.target === lightbox) {
+      lightbox.classList.remove('active');
+      videoBox.pause();
+    }
   });
 </script>
 
