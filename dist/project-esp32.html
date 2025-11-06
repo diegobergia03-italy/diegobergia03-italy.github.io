@@ -4,15 +4,16 @@
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>ESP32 Weather Station — Project</title>
-  <meta name="description" content="Mini stazione meteo con ESP32: modello 3D ruotabile, codice Arduino e galleria foto.">
+  <meta name="description" content="Mini stazione meteo con ESP32: modello 3D ruotabile, galleria foto e codice Arduino.">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
   <link href="css/styles.css" rel="stylesheet"/>
-
-  <!-- model-viewer -->
   <script type="module" src="https://cdn.jsdelivr.net/npm/@google/model-viewer@3.4.0/dist/model-viewer.min.js"></script>
 
   <style>
-    /* Layout due colonne */
+    /* Contenitori più stretti dove serve */
+    .section-narrow { max-width: 980px; margin: 0 auto; }
+
+    /* Due colonne */
     .two-col { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
     @media (max-width: 992px){ .two-col { grid-template-columns:1fr; } }
 
@@ -24,7 +25,7 @@
       max-height:520px;
     }
     @media (max-width: 768px){
-      pre.codebox { font-size:.78rem; padding:.75rem; max-height:320px; }
+      pre.codebox { font-size:.72rem; padding:.65rem; max-height:240px; }
     }
 
     /* 3D viewer */
@@ -37,13 +38,28 @@
     /* Immagini */
     img, canvas, video { max-width:100%; height:auto; display:block; border-radius:.5rem; }
 
-    /* Spaziatura */
+    /* Spaziatura sezioni */
     section { margin-bottom:2.25rem; }
     @media (max-width: 768px){ section{ margin-bottom:1.35rem; } }
 
-    /* Galleria */
-    .carousel-item img { width:100%; height:auto; }
-    .carousel-indicators [data-bs-target]{ width:10px; height:10px; border-radius:50%; }
+    /* Galleria: più piccola su desktop, centrata, altezza limitata */
+    .carousel-slim { max-width: 900px; margin: 0 auto; }
+    .carousel-slim .carousel-item img {
+      width:100%; max-height:420px; object-fit:contain;
+    }
+    @media (min-width:1200px){
+      .carousel-slim { max-width: 840px; } /* ancora un pelo più stretta su schermi grandi */
+      .carousel-slim .carousel-item img { max-height: 380px; }
+    }
+    @media (max-width: 768px){
+      .carousel-slim .carousel-item img { max-height: 240px; }
+    }
+
+    /* Wiring image: più compatta su mobile */
+    .wire-img { width:100%; height:auto; }
+    @media (max-width:768px){
+      .wire-img { max-height: 220px; object-fit: contain; }
+    }
   </style>
 </head>
 
@@ -69,7 +85,7 @@
 <main class="container my-4">
 
   <!-- 3D MODEL -->
-  <section>
+  <section class="section-narrow">
     <h2 class="h4 mb-3">3D Model (rotate me)</h2>
     <model-viewer
       src="assets/3d/esp32-case.glb"
@@ -83,11 +99,10 @@
     </model-viewer>
   </section>
 
-  <!-- GALLERIA FOTO (spostata sopra al Wiring) -->
-  <section>
+  <!-- GALLERIA FOTO (più piccola su desktop) -->
+  <section class="section-narrow">
     <h2 class="h4 mb-3">Photo Gallery</h2>
-
-    <div id="galleryPhotos" class="carousel slide" data-bs-ride="carousel" data-bs-touch="true">
+    <div id="galleryPhotos" class="carousel slide carousel-slim" data-bs-ride="carousel" data-bs-touch="true">
       <div class="carousel-inner rounded">
         <div class="carousel-item active">
           <img src="assets/img/portfolio/esp32-thumb.jpeg" alt="Project cover - ESP32 weather sensor">
@@ -102,8 +117,6 @@
           <img src="assets/img/portfolio/esp32-wiring.jpeg" alt="Full wiring photo">
         </div>
       </div>
-
-      <!-- Frecce -->
       <button class="carousel-control-prev" type="button" data-bs-target="#galleryPhotos" data-bs-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Previous</span>
@@ -112,8 +125,6 @@
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Next</span>
       </button>
-
-      <!-- Indicatori -->
       <div class="carousel-indicators mt-3">
         <button type="button" data-bs-target="#galleryPhotos" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
         <button type="button" data-bs-target="#galleryPhotos" data-bs-slide-to="1" aria-label="Slide 2"></button>
@@ -123,14 +134,13 @@
     </div>
   </section>
 
-  <!-- WIRING + CODE -->
-  <section>
+  <!-- WIRING + CODE (più compatto su mobile) -->
+  <section class="section-narrow">
     <h2 class="h4 mb-3">Wiring & Code</h2>
     <div class="two-col">
       <div>
-        <img src="assets/img/portfolio/esp32-wiring-tinkercad.jpeg" alt="Tinkercad wiring screenshot" class="shadow-sm">
+        <img src="assets/img/portfolio/esp32-wiring-tinkercad.jpeg" alt="Tinkercad wiring screenshot" class="shadow-sm wire-img">
       </div>
-
       <div>
         <div class="d-flex justify-content-between align-items-center mb-2">
           <h3 class="h6 m-0">Arduino Code</h3>
@@ -142,7 +152,7 @@
   </section>
 
   <!-- DOWNLOAD STL -->
-  <section class="mb-0">
+  <section class="section-narrow mb-0">
     <h2 class="h4 mb-3">Downloads</h2>
     <ul class="list-unstyled">
       <li><a href="assets/stl/case-sensore-umidita-temperatura.stl" download>Case sensore umidità e temperatura (.stl)</a></li>
