@@ -242,17 +242,54 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/scripts.js"></script>
 
-    <!-- Hover style -->
-    <style>
-      .portfolio-card { position: relative; display: block; overflow: hidden; border-radius: .5rem; }
-      .portfolio-card img { transition: transform .3s ease; }
-      .portfolio-card:hover img { transform: scale(1.05); }
-      .portfolio-item-caption {
-        position:absolute; inset:0; background: rgba(0,0,0,.55);
-        opacity:0; transition: opacity .25s ease;
-      }
-      .portfolio-card:hover .portfolio-item-caption { opacity:1; }
-      .portfolio-item-caption h3, .portfolio-item-caption small { color:#fff; }
-    </style>
+  <!-- Hover style and overlay fix -->
+<style>
+  /* Effetto hover per le card */
+  .portfolio-card {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    border-radius: .5rem;
+    z-index: 0;
+  }
+
+  .portfolio-card img {
+    transition: transform .3s ease;
+  }
+
+  .portfolio-card:hover img {
+    transform: scale(1.05);
+  }
+
+  .portfolio-item-caption {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+    opacity: 0;
+    transition: opacity .25s ease;
+    pointer-events: none; /* 🔧 evita che il layer blocchi lo scroll */
+  }
+
+  .portfolio-card:hover .portfolio-item-caption {
+    opacity: 1;
+  }
+
+  .portfolio-item-caption h3,
+  .portfolio-item-caption small {
+    color: #fff;
+  }
+
+  /* 🔧 Correzione sovrapposizione tra sezioni */
+  #portfolio {
+    position: relative;
+    z-index: 2;
+  }
+
+  #skills {
+    position: relative;
+    z-index: 1;
+  }
+</style>
+
   </body>
 </html>
