@@ -22,46 +22,66 @@
       pre.codebox { font-size:.72rem; padding:.65rem; max-height:240px; }
     }
 
-    /* 3D viewer: più compatto su desktop; zoom con rotellina quando è in focus */
     model-viewer{
       width:100%; height:320px; background:#f8fafc; border-radius:.5rem; display:block;
       --poster-color: transparent;
-      outline: none;
     }
     @media (max-width: 768px){ model-viewer{ height:240px; } }
 
-    img, canvas, video { max-width:100%; height:auto; display:block; border-radius:.5rem; }
+    img, canvas, video { max-width:100%; height:auto; display:block; border-radius:.5rem; cursor:pointer; }
 
     section { margin-bottom:2.25rem; }
     @media (max-width: 768px){ section{ margin-bottom:1.35rem; } }
 
-    /* Galleria: più piccola su desktop, centrata, altezza limitata */
-    .carousel-slim { max-width: 900px; margin: 0 auto; }
-    .carousel-slim .carousel-item img { width:100%; max-height:420px; object-fit:contain; }
-    @media (min-width:1200px){
-      .carousel-slim { max-width: 840px; }
-      .carousel-slim .carousel-item img { max-height: 380px; }
+    /* Galleria piccola */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
     }
-    @media (max-width: 768px){ .carousel-slim .carousel-item img { max-height: 240px; } }
 
-    .wire-img { width:100%; height:auto; }
-    @media (max-width:768px){ .wire-img { max-height: 220px; object-fit: contain; } }
-
-    /* Frecce visibili su qualsiasi foto */
-    .carousel-control-prev, .carousel-control-next {
-      width: 3rem;
+    /* Lightbox */
+    .lightbox {
+      display: none;
+      position: fixed;
+      z-index: 1050;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.9);
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
     }
-    .carousel-control-prev-icon, .carousel-control-next-icon{
-      filter: invert(1) brightness(0); /* da bianco → nero */
-      background-color: rgba(255,255,255,0.85); /* “pill” chiara */
+    .lightbox.active { display: flex; }
+    .lightbox img {
+      max-width: 90%;
+      max-height: 80vh;
+      object-fit: contain;
+      border-radius: .5rem;
+      box-shadow: 0 0 20px rgba(255,255,255,0.2);
+    }
+    .lightbox button {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255,255,255,0.3);
+      border: none;
+      color: white;
+      font-size: 2rem;
+      padding: .5rem .9rem;
       border-radius: 50%;
-      padding: .75rem;
-      box-shadow: 0 2px 6px rgba(0,0,0,.25);
+      cursor: pointer;
+      transition: background 0.2s;
     }
-    .carousel-control-prev:hover .carousel-control-prev-icon,
-    .carousel-control-next:hover .carousel-control-next-icon{
-      background-color: rgba(255,255,255,1);
+    .lightbox button:hover { background: rgba(255,255,255,0.6); }
+    .lightbox .prev { left: 5%; }
+    .lightbox .next { right: 5%; }
+    .lightbox .close {
+      top: 5%;
+      right: 5%;
+      transform: none;
+      font-size: 1.8rem;
     }
+
   </style>
 </head>
 
@@ -95,8 +115,7 @@
       auto-rotate
       reveal="auto"
       crossorigin="anonymous"
-      interaction-policy="allow-when-focused"  <!-- ruota/zoom solo dopo click -->
-      touch-action="pan-y"
+      interaction-policy="allow-when-focused"
       alt="3D model of the ESP32 weather station enclosure">
     </model-viewer>
   </section>
@@ -104,42 +123,26 @@
   <!-- GALLERY -->
   <section class="section-narrow">
     <h2 class="h4 mb-3">Photo Gallery</h2>
-    <div id="galleryPhotos" class="carousel slide carousel-slim" data-bs-ride="carousel" data-bs-touch="true">
-      <div class="carousel-inner rounded">
-        <div class="carousel-item active">
-          <img src="assets/img/portfolio/esp32-thumb.jpeg" alt="Project cover - ESP32 weather sensor">
-        </div>
-        <div class="carousel-item">
-          <img src="assets/img/portfolio/esp32-front.jpeg" alt="Sensor front view">
-        </div>
-        <div class="carousel-item">
-          <img src="assets/img/portfolio/esp32-back.jpeg" alt="Sensor back view">
-        </div>
-        <div class="carousel-item">
-          <img src="assets/img/portfolio/esp32-wiring.jpeg" alt="Full wiring photo">
-        </div>
-      </div>
-      <button class="carousel-control-prev" type="button" data-bs-target="#galleryPhotos" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-      </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#galleryPhotos" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-      </button>
-      <div class="carousel-indicators mt-3">
-        <button type="button" data-bs-target="#galleryPhotos" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-        <button type="button" data-bs-target="#galleryPhotos" data-bs-slide-to="1" aria-label="Slide 2"></button>
-        <button type="button" data-bs-target="#galleryPhotos" data-bs-slide-to="2" aria-label="Slide 3"></button>
-        <button type="button" data-bs-target="#galleryPhotos" data-bs-slide-to="3" aria-label="Slide 4"></button>
-      </div>
+    <div class="gallery-grid">
+      <img src="assets/img/portfolio/esp32-thumb.jpeg" alt="Project cover">
+      <img src="assets/img/portfolio/esp32-front.jpeg" alt="Front view">
+      <img src="assets/img/portfolio/esp32-back.jpeg" alt="Back view">
+      <img src="assets/img/portfolio/esp32-wiring.jpeg" alt="Wiring photo">
     </div>
   </section>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox">
+    <button class="prev">&#10094;</button>
+    <img src="" alt="Expanded photo" id="lightbox-img">
+    <button class="next">&#10095;</button>
+    <button class="close">&times;</button>
+  </div>
 
   <!-- WIRING -->
   <section class="section-narrow">
     <h2 class="h4 mb-3">Wiring</h2>
-    <img src="assets/img/portfolio/esp32-wiring-tinkercad.jpeg" alt="Tinkercad wiring screenshot" class="shadow-sm wire-img">
+    <img src="assets/img/portfolio/esp32-wiring-tinkercad.jpeg" alt="Tinkercad wiring screenshot" class="shadow-sm">
   </section>
 
   <!-- CODE -->
@@ -171,6 +174,39 @@
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js"></script>
+
+<!-- Lightbox Script -->
+<script>
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+  const gallery = document.querySelectorAll('.gallery-grid img');
+  let current = 0;
+
+  gallery.forEach((img, i) => {
+    img.addEventListener('click', () => {
+      current = i;
+      openLightbox();
+    });
+  });
+
+  function openLightbox(){
+    lightbox.classList.add('active');
+    lightboxImg.src = gallery[current].src;
+  }
+
+  document.querySelector('.lightbox .close').onclick = () => lightbox.classList.remove('active');
+  document.querySelector('.lightbox .prev').onclick = () => change(-1);
+  document.querySelector('.lightbox .next').onclick = () => change(1);
+
+  function change(dir){
+    current = (current + dir + gallery.length) % gallery.length;
+    lightboxImg.src = gallery[current].src;
+  }
+
+  lightbox.addEventListener('click', e => {
+    if(e.target === lightbox) lightbox.classList.remove('active');
+  });
+</script>
 
 <!-- Caricamento codice Arduino -->
 <script>
