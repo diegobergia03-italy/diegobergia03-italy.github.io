@@ -11,21 +11,27 @@
 
   <style>
     .section-narrow { max-width: 980px; margin: 0 auto; }
-    pre.codebox{
-      background:#0f172a;color:#e2e8f0;padding:1rem;border-radius:.5rem;overflow:auto;
-      font-size:.95rem;line-height:1.4;max-height:520px;white-space:pre;
-    }
+    pre.codebox{ background:#0f172a;color:#e2e8f0;padding:1rem;border-radius:.5rem;overflow:auto;
+      font-size:.95rem;line-height:1.4;max-height:520px;white-space:pre; }
     @media (max-width:768px){ pre.codebox{font-size:.72rem;padding:.65rem;max-height:240px;} }
 
-    model-viewer{
-      width:100%;height:320px;background:#f8fafc;border-radius:.5rem;display:block;--poster-color:transparent;
+    /* ⬇️ wrapper scuro dietro al 3D per contrasto */
+    .model-frame{
+      background: radial-gradient(1200px 400px at 50% -100px, #1f2937 0%, #0b1020 70%);
+      border-radius:.75rem; padding:10px;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.06);
     }
-    @media (max-width:768px){ model-viewer{ height:240px; } }
+    /* viewer più compatto su desktop; ottimo contrasto */
+    model-viewer{
+      width:100%; height:320px; border-radius:.5rem; display:block;
+      --poster-color: transparent;
+      background: #0b1020; /* ulteriore safety se gradient non carica */
+      outline: none;
+    }
+    @media (max-width: 768px){ model-viewer{ height:240px; } }
 
     img, video{ max-width:100%; height:auto; display:block; border-radius:.5rem; cursor:pointer; object-fit:cover; }
     section{ margin-bottom:2.25rem; } @media (max-width:768px){ section{ margin-bottom:1.35rem; } }
-
-    /* Galleria griglia */
     .gallery-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:1rem; }
 
     /* Lightbox */
@@ -59,28 +65,32 @@
 
 <main class="container my-4">
 
-  <!-- 3D MODEL -->
+  <!-- 3D MODEL con contrasto e luce -->
   <section class="section-narrow">
     <h2 class="h4 mb-3">3D Model (rotate me)</h2>
-    <model-viewer
-      src="assets/3d/esp32-case.glb"
-      poster="assets/img/portfolio/esp32-thumb.jpeg"
-      camera-controls auto-rotate reveal="auto" crossorigin="anonymous"
-      interaction-policy="allow-when-focused"
-      alt="3D model of the ESP32 weather station enclosure">
-    </model-viewer>
+    <div class="model-frame">
+      <model-viewer
+        src="assets/3d/esp32-case.glb"
+        poster="assets/img/portfolio/esp32-thumb.jpeg"
+        camera-controls auto-rotate reveal="auto" crossorigin="anonymous"
+        interaction-policy="allow-when-focused"
+        environment-image="neutral"
+        shadow-intensity="1" shadow-softness="0.9"
+        exposure="0.9"
+        camera-orbit="0deg 70deg 110%"
+        field-of-view="35deg"
+        alt="3D model of the ESP32 weather station enclosure">
+      </model-viewer>
+    </div>
   </section>
 
-  <!-- GALLERY (video per primo, foto di copertina rimossa) -->
+  <!-- GALLERY (video per primo, cover rimossa) -->
   <section class="section-narrow">
     <h2 class="h4 mb-3">Photo & Video Gallery</h2>
     <div class="gallery-grid">
-      <!-- Video anteprima: autoplay + loop + muted + playsinline -->
       <video playsinline muted autoplay loop preload="metadata" poster="assets/img/portfolio/esp32-front.jpeg">
         <source src="assets/video/esp32-demo.mp4" type="video/mp4">
       </video>
-
-      <!-- Niente esp32-thumb.jpeg qui: resta solo come cover nel portfolio -->
       <img src="assets/img/portfolio/esp32-front.jpeg" alt="Front view">
       <img src="assets/img/portfolio/esp32-back.jpeg" alt="Back view">
       <img src="assets/img/portfolio/esp32-wiring.jpeg" alt="Wiring photo">
@@ -91,7 +101,6 @@
   <div class="lightbox" id="lightbox">
     <button class="prev">&#10094;</button>
     <img src="" alt="Expanded media" id="lightbox-img">
-    <!-- Video in lightbox: autoplay+loop+muted (sempre muto) -->
     <video id="lightbox-video" controls playsinline muted loop></video>
     <button class="next">&#10095;</button>
     <button class="close">&times;</button>
@@ -133,7 +142,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js"></script>
 
-<!-- Lightbox Script (foto + video, video sempre muto in autoplay/loop) -->
+<!-- Lightbox Script (foto + video, video muto in autoplay/loop) -->
 <script>
   const lightbox = document.getElementById('lightbox');
   const imgBox = document.getElementById('lightbox-img');
@@ -155,18 +164,33 @@
     } else {
       imgBox.removeAttribute('src'); imgBox.style.display = 'none';
       videoBox.style.display = 'block';
-      videoBox.src = el.querySelector('source') ? el.querySelector('source').src : el.src;
-      videoBox.muted = true; videoBox.loop = true; videoBox.play().catch(()=>{});
+      const src = el.querySelector('source') ? el.querySelector('source').src : el.src;
+      videoBox.src = src; videoBox.muted = true; videoBox.loop = true; videoBox.play().catch(()=>{});
     }
   }
 
   document.querySelector('.lightbox .close').onclick = () => { lightbox.classList.remove('active'); videoBox.pause(); };
   document.querySelector('.lightbox .prev').onclick  = () => change(-1);
   document.querySelector('.lightbox .next').onclick  = () => change(1);
-
   function change(dir){ current = (current + dir + mediaItems.length) % mediaItems.length; showCurrent(); }
-
   lightbox.addEventListener('click', e => { if (e.target === lightbox) { lightbox.classList.remove('active'); videoBox.pause(); } });
+
+  /* 🎨 OPZIONALE: tinta materiale se il GLB è bianco senza texture.
+     Scommenta il blocco sotto per applicare un colore tenue al modello.
+  */
+  /*
+  const mv = document.querySelector('model-viewer');
+  mv.addEventListener('load', () => {
+    const mats = mv.model && mv.model.materials ? mv.model.materials : [];
+    mats.forEach(m => {
+      // colore blu-grigio #5B7DA3 → [0.36, 0.49, 0.64]
+      m.pbrMetallicRoughness.setBaseColorFactor([0.36, 0.49, 0.64, 1.0]);
+      // riduci riflessi se serve:
+      m.pbrMetallicRoughness.setMetallicFactor(0.05);
+      m.pbrMetallicRoughness.setRoughnessFactor(0.6);
+    });
+  });
+  */
 </script>
 
 <!-- Caricamento codice Arduino -->
