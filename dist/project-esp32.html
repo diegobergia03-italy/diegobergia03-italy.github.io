@@ -11,9 +11,13 @@
 
   <style>
     .section-narrow { max-width: 980px; margin: 0 auto; }
-    pre.codebox{ background:#0f172a;color:#e2e8f0;padding:1rem;border-radius:.5rem;overflow:auto;
-      font-size:.95rem;line-height:1.4;max-height:520px;white-space:pre; }
-    @media (max-width:768px){ pre.codebox{font-size:.72rem;padding:.65rem;max-height:240px;} }
+    pre.codebox{
+      background:#0f172a;color:#e2e8f0;padding:1rem;border-radius:.5rem;overflow:auto;
+      font-size:.95rem;line-height:1.4;max-height:520px;white-space:pre;
+    }
+    @media (max-width:768px){
+      pre.codebox{font-size:.72rem;padding:.65rem;max-height:240px;}
+    }
 
     .model-frame{
       background: radial-gradient(1200px 400px at 50% -100px, #1f2937 0%, #0b1020 70%);
@@ -28,19 +32,36 @@
     }
     @media (max-width: 768px){ model-viewer{ height:240px; } }
 
-    img, video{ max-width:100%; height:auto; display:block; border-radius:.5rem; cursor:pointer; object-fit:cover; }
-    section{ margin-bottom:2.25rem; } 
+    img, video{
+      max-width:100%; height:auto; display:block; border-radius:.5rem;
+      cursor:pointer; object-fit:cover;
+    }
+    section{ margin-bottom:2.25rem; }
     @media (max-width:768px){ section{ margin-bottom:1.35rem; } }
-    .gallery-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:1rem; }
 
-    .lightbox{ display:none; position:fixed; z-index:1050; inset:0; background:rgba(0,0,0,.9);
-               justify-content:center; align-items:center; flex-direction:column; }
+    .gallery-grid{
+      display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:1rem;
+    }
+
+    .lightbox{
+      display:none; position:fixed; z-index:1050; inset:0; background:rgba(0,0,0,.9);
+      justify-content:center; align-items:center; flex-direction:column;
+    }
     .lightbox.active{ display:flex; }
-    .lightbox img, .lightbox video{ max-width:90%; max-height:80vh; object-fit:contain; border-radius:.5rem; box-shadow:0 0 20px rgba(255,255,255,.2); }
-    .lightbox button{ position:absolute; top:50%; transform:translateY(-50%); background:rgba(255,255,255,.3);
-                      border:none; color:#fff; font-size:2rem; padding:.5rem .9rem; border-radius:50%; cursor:pointer; }
-    .lightbox .prev{ left:5%; } .lightbox .next{ right:5%; }
-    .lightbox .close{ top:5%; right:5%; transform:none; font-size:1.8rem; }
+    .lightbox img, .lightbox video{
+      max-width:90%; max-height:80vh; object-fit:contain;
+      border-radius:.5rem; box-shadow:0 0 20px rgba(255,255,255,.2);
+    }
+    .lightbox button{
+      position:absolute; top:50%; transform:translateY(-50%);
+      background:rgba(255,255,255,.3); border:none; color:#fff;
+      font-size:2rem; padding:.5rem .9rem; border-radius:50%; cursor:pointer;
+    }
+    .lightbox .prev{ left:5%; }
+    .lightbox .next{ right:5%; }
+    .lightbox .close{
+      top:5%; right:5%; transform:none; font-size:1.8rem;
+    }
   </style>
 </head>
 <body>
@@ -127,6 +148,10 @@
       <li><a href="assets/stl/case-sensore-umidita-temperatura.stl" download>Case sensore umidità e temperatura (.stl)</a></li>
       <li><a href="assets/stl/tappo-case-sensore-umidita-temperatura.stl" download>Tappo del case (.stl)</a></li>
     </ul>
+    <p class="text-muted small mt-2">
+      I due file STL corrispondono al corpo principale del case e al tappo frontale.
+      Sono pensati per essere stampati senza supporti, con tolleranze adatte a un montaggio semplice del sensore e del display.
+    </p>
   </section>
 
 </main>
@@ -163,28 +188,41 @@
       imgBox.removeAttribute('src'); imgBox.style.display = 'none';
       videoBox.style.display = 'block';
       const src = el.querySelector('source') ? el.querySelector('source').src : el.src;
-      videoBox.src = src; videoBox.muted = true; videoBox.loop = true; videoBox.play().catch(()=>{});
+      videoBox.src = src; videoBox.muted = true; videoBox.loop = true;
+      videoBox.play().catch(()=>{});
     }
   }
 
-  document.querySelector('.lightbox .close').onclick = () => { lightbox.classList.remove('active'); videoBox.pause(); };
+  document.querySelector('.lightbox .close').onclick = () => {
+    lightbox.classList.remove('active');
+    videoBox.pause();
+  };
   document.querySelector('.lightbox .prev').onclick  = () => change(-1);
   document.querySelector('.lightbox .next').onclick  = () => change(1);
-  function change(dir){ current = (current + dir + mediaItems.length) % mediaItems.length; showCurrent(); }
-  lightbox.addEventListener('click', e => { if (e.target === lightbox) { lightbox.classList.remove('active'); videoBox.pause(); } });
 
-  // 🎨 Colore blu coerente con il sito
+  function change(dir){
+    current = (current + dir + mediaItems.length) % mediaItems.length;
+    showCurrent();
+  }
+
+  lightbox.addEventListener('click', e => {
+    if (e.target === lightbox) {
+      lightbox.classList.remove('active');
+      videoBox.pause();
+    }
+  });
+
+  // 🎨 Modello 3D bianco (rimuove l'azzurrino)
   const mv = document.querySelector('model-viewer');
   mv.addEventListener('load', () => {
     const mats = mv.model && mv.model.materials ? mv.model.materials : [];
     mats.forEach(m => {
-      // Blu #1976d2
-      m.pbrMetallicRoughness.setBaseColorFactor([0.098, 0.463, 0.824, 1.0]);
-      m.pbrMetallicRoughness.setMetallicFactor(0.1);
-      m.pbrMetallicRoughness.setRoughnessFactor(0.6);
+      // Bianco neutro
+      m.pbrMetallicRoughness.setBaseColorFactor([1.0, 1.0, 1.0, 1.0]);
+      m.pbrMetallicRoughness.setMetallicFactor(0.0);
+      m.pbrMetallicRoughness.setRoughnessFactor(0.7);
     });
   });
-
 </script>
 
 <!-- Caricamento codice Arduino -->
