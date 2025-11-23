@@ -4,31 +4,90 @@
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>Portafoto LED — Project</title>
-  <meta name="description" content="Cornice portafoto con LED: progettazione 3D, wiring e codice. Galleria foto/video e file STL.">
+  <meta name="description" content="Cornice portafoto stampata in 3D con illuminazione LED. Modello 3D ruotabile, galleria immagini e file STL separati.">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
   <link href="css/styles.css" rel="stylesheet"/>
+  <script type="module" src="https://cdn.jsdelivr.net/npm/@google/model-viewer@3.4.0/dist/model-viewer.min.js"></script>
 
   <style>
     .section-narrow { max-width: 980px; margin: 0 auto; }
-    pre.codebox{ background:#0f172a;color:#e2e8f0;padding:1rem;border-radius:.5rem;overflow:auto;
-      font-size:.95rem;line-height:1.4;max-height:520px;white-space:pre; }
-    @media (max-width:768px){ pre.codebox{font-size:.72rem;padding:.65rem;max-height:240px;} }
 
-    img, video{ max-width:100%; height:auto; display:block; border-radius:.5rem; object-fit:cover; cursor:pointer; }
-    section{ margin-bottom:2.25rem; } @media (max-width:768px){ section{ margin-bottom:1.35rem; } }
-    .gallery-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:1rem; }
+    .model-frame{
+      background: radial-gradient(1200px 400px at 50% -100px, #1f2937 0%, #0b1020 70%);
+      border-radius:.75rem; padding:10px;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.06);
+    }
+    model-viewer{
+      width:100%; height:320px; border-radius:.5rem; display:block;
+      --poster-color: transparent;
+      background:#0b1020;
+      outline:none;
+    }
+    @media (max-width:768px){ model-viewer{ height:240px; } }
+
+    img{
+      max-width:100%; height:auto; display:block;
+      border-radius:.5rem; object-fit:cover; cursor:pointer;
+      box-shadow:0 4px 12px rgba(0,0,0,.15);
+    }
+
+    section{ margin-bottom:2.25rem; }
+
+    @media (max-width:768px){ 
+      section{ margin-bottom:1.35rem; } 
+    }
+
+    .gallery-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:1rem;
+    }
 
     /* Lightbox */
-    .lightbox{ display:none; position:fixed; z-index:1050; inset:0; background:rgba(0,0,0,.9);
-               justify-content:center; align-items:center; flex-direction:column; }
+    .lightbox{
+      display:none;
+      position:fixed;
+      inset:0;
+      z-index:1050;
+      background:rgba(0,0,0,.9);
+      justify-content:center;
+      align-items:center;
+      flex-direction:column;
+    }
     .lightbox.active{ display:flex; }
-    .lightbox img, .lightbox video{ max-width:90%; max-height:80vh; object-fit:contain; border-radius:.5rem; box-shadow:0 0 20px rgba(255,255,255,.2); }
-    .lightbox button{ position:absolute; top:50%; transform:translateY(-50%); background:rgba(255,255,255,.3);
-                      border:none; color:#fff; font-size:2rem; padding:.5rem .9rem; border-radius:50%; cursor:pointer; }
-    .lightbox .prev{ left:5%; } .lightbox .next{ right:5%; }
-    .lightbox .close{ top:5%; right:5%; transform:none; font-size:1.8rem; }
+
+    .lightbox img{
+      max-width:90%;
+      max-height:80vh;
+      object-fit:contain;
+      border-radius:.5rem;
+      box-shadow:0 0 20px rgba(255,255,255,.2);
+    }
+
+    .lightbox button{
+      position:absolute;
+      top:50%;
+      transform:translateY(-50%);
+      background:rgba(255,255,255,.3);
+      border:none;
+      color:#fff;
+      font-size:2rem;
+      padding:.5rem .9rem;
+      border-radius:50%;
+      cursor:pointer;
+    }
+    .lightbox .prev{ left:5%; }
+    .lightbox .next{ right:5%; }
+    .lightbox .close{
+      top:5%;
+      right:5%;
+      transform:none;
+      font-size:1.8rem;
+      background:rgba(255,255,255,.25);
+    }
   </style>
 </head>
+
 <body>
 <nav class="navbar navbar-expand-lg bg-secondary text-uppercase">
   <div class="container">
@@ -40,65 +99,66 @@
   <div class="container">
     <h1 class="mb-2">Portafoto con LED</h1>
     <p class="lead mb-0">
-      Cornice portafoto con illuminazione LED integrata. Progettata in SolidWorks e stampata in 3D,
-      include un canale interno per la strip LED, passacavo, interruttore e alimentazione 5–12V.
-      In questa pagina trovi galleria foto/video, wiring e il codice (se controllata da microcontrollore).
+      Cornice portafoto stampata in 3D, composta da tre parti: cornice frontale, retro e base inferiore.
+      Progettata per integrare un sistema LED e creare un effetto luminoso uniforme attorno alla fotografia.
     </p>
   </div>
 </header>
 
 <main class="container my-4">
+
+  <!-- 3D MODEL -->
+  <section class="section-narrow">
+    <h2 class="h4 mb-3">3D Model (rotate me)</h2>
+    <div class="model-frame">
+      <model-viewer
+        src="assets/3d/portafoto.glb"
+        camera-controls
+        auto-rotate
+        reveal="auto"
+        crossorigin="anonymous"
+        environment-image="neutral"
+        shadow-intensity="1"
+        shadow-softness="0.9"
+        exposure="0.9"
+        camera-orbit="0deg 70deg 110%"
+        field-of-view="35deg"
+        alt="3D model of the LED picture frame">
+      </model-viewer>
+    </div>
+  </section>
+
   <!-- GALLERY -->
   <section class="section-narrow">
-    <h2 class="h4 mb-3">Photo & Video Gallery</h2>
+    <h2 class="h4 mb-3">Photo Gallery</h2>
+
     <div class="gallery-grid">
-      <!-- Video anteprima: autoplay+loop+muted+playsinline (funziona su iPhone) -->
-      <video autoplay muted loop playsinline preload="auto" style="width:100%; border-radius:10px;">
-        <source src="assets/video/portafoto-demo.mp4" type="video/mp4">
-      </video>
-      <img src="assets/img/portfolio/portafoto-front.jpeg" alt="Portafoto LED - vista frontale">
-      <img src="assets/img/portfolio/portafoto-back.jpeg" alt="Portafoto LED - retro e passacavo">
-      <img src="assets/img/portfolio/portafoto-detail.jpeg" alt="Dettaglio canale LED e diffusore">
+      <img src="assets/img/portfolio/portafoto-1.jpeg" alt="Portafoto LED - foto 1">
+      <img src="assets/img/portfolio/portafoto-2.jpeg" alt="Portafoto LED - foto 2">
+      <img src="assets/img/portfolio/portafoto-3.jpeg" alt="Portafoto LED - foto 3">
     </div>
   </section>
 
   <!-- LIGHTBOX -->
   <div class="lightbox" id="lightbox">
     <button class="prev">&#10094;</button>
-    <img src="" alt="Expanded media" id="lightbox-img">
-    <video id="lightbox-video" controls playsinline muted loop></video>
+    <img id="lightbox-img" src="" alt="Expanded">
     <button class="next">&#10095;</button>
     <button class="close">&times;</button>
   </div>
 
-  <!-- WIRING -->
-  <section class="section-narrow">
-    <h2 class="h4 mb-3">Wiring</h2>
-    <img src="assets/img/portfolio/portafoto-wiring.jpeg" alt="Schema collegamenti Portafoto LED" class="shadow-sm">
-    <p class="text-muted mt-2">
-      Esempio: strip LED 5V con interruttore a levetta; opzionale controllo via microcontrollore (PWM per luminosità).
-    </p>
-  </section>
-
-  <!-- CODE (opzionale) -->
-  <section class="section-narrow">
-    <h2 class="h4 mb-3">Code (optional)</h2>
-    <div class="d-flex justify-content-between align-items-center mb-2">
-      <h3 class="h6 m-0">Arduino / ESP32 (dimmer LED PWM)</h3>
-      <a class="btn btn-sm btn-outline-secondary" target="_blank" rel="noopener" href="assets/code/portafoto-led.ino">Apri file</a>
-    </div>
-    <pre class="codebox"><code id="code-portafoto">// Caricamento...</code></pre>
-  </section>
-
   <!-- DOWNLOAD STL -->
   <section class="section-narrow mb-0">
     <h2 class="h4 mb-3">Downloads</h2>
+    <p class="text-muted">I tre componenti separati pronti per la stampa 3D:</p>
+
     <ul class="list-unstyled">
-      <li><a href="assets/stl/portafoto-cornice.stl" download>Cornice (.stl)</a></li>
-      <li><a href="assets/stl/portafoto-retro.stl" download>Retro / coperchio (.stl)</a></li>
-      <li><a href="assets/stl/portafoto-diffusore.stl" download>Diffusore luce (.stl)</a></li>
+      <li><a href="assets/stl/portafoto-cornice.stl" download>Cornice frontale (.stl)</a></li>
+      <li><a href="assets/stl/portafoto-retro.stl" download>Retro (.stl)</a></li>
+      <li><a href="assets/stl/portafoto-base.stl" download>Base inferiore (.stl)</a></li>
     </ul>
   </section>
+
 </main>
 
 <footer class="text-center py-4 bg-light">
@@ -107,48 +167,37 @@
   </div>
 </footer>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-
-<!-- Lightbox Script (foto+video) -->
 <script>
+  /* LIGHTBOX */
   const lightbox = document.getElementById('lightbox');
   const imgBox = document.getElementById('lightbox-img');
-  const videoBox = document.getElementById('lightbox-video');
-  const mediaItems = document.querySelectorAll('.gallery-grid img, .gallery-grid video');
+  const imgs = document.querySelectorAll('.gallery-grid img');
   let current = 0;
 
-  mediaItems.forEach((el, i) => el.addEventListener('click', () => { current = i; openLightbox(); }));
+  imgs.forEach((el, i) => {
+    el.addEventListener('click', () => { current = i; openLightbox(); });
+  });
 
-  function openLightbox(){ lightbox.classList.add('active'); showCurrent(); }
-  function showCurrent(){
-    const el = mediaItems[current];
-    if (el.tagName === 'IMG') {
-      videoBox.pause(); videoBox.removeAttribute('src'); videoBox.load();
-      videoBox.style.display = 'none'; imgBox.style.display = 'block'; imgBox.src = el.src;
-    } else {
-      imgBox.removeAttribute('src'); imgBox.style.display = 'none';
-      videoBox.style.display = 'block';
-      const src = el.querySelector('source') ? el.querySelector('source').src : el.src;
-      videoBox.src = src; videoBox.muted = true; videoBox.loop = true; videoBox.play().catch(()=>{});
-    }
-  }
-  document.querySelector('.lightbox .close').onclick = () => { lightbox.classList.remove('active'); videoBox.pause(); };
-  document.querySelector('.lightbox .prev').onclick = () => change(-1);
-  document.querySelector('.lightbox .next').onclick = () => change(1);
-  function change(dir){ current = (current + dir + mediaItems.length) % mediaItems.length; showCurrent(); }
-  lightbox.addEventListener('click', e => { if(e.target === lightbox){ lightbox.classList.remove('active'); videoBox.pause(); } });
+  function openLightbox(){ lightbox.classList.add('active'); show(); }
+  function show(){ imgBox.src = imgs[current].src; }
 
-  // Carica il codice (se esiste il file .ino)
-  (async () => {
-    try {
-      const resp = await fetch('assets/code/portafoto-led.ino', { cache: 'no-store' });
-      if (!resp.ok) throw new Error('HTTP ' + resp.status);
-      document.getElementById('code-portafoto').textContent = await resp.text();
-    } catch {
-      document.getElementById('code-portafoto').textContent =
-        '// Impossibile caricare il file .ino.\n// Verifica percorso: dist/assets/code/portafoto-led.ino';
-    }
-  })();
+  document.querySelector('.lightbox .close').onclick = () => lightbox.classList.remove('active');
+  document.querySelector('.lightbox .prev').onclick = () => { current = (current - 1 + imgs.length) % imgs.length; show(); };
+  document.querySelector('.lightbox .next').onclick = () => { current = (current + 1) % imgs.length; show(); };
+
+  lightbox.addEventListener('click', e => { if(e.target === lightbox){ lightbox.classList.remove('active'); } });
+
+  /* COLORA IL MODELLO 3D (blu come il sito) */
+  const mv = document.querySelector('model-viewer');
+  mv.addEventListener('load', () => {
+    const mats = mv.model && mv.model.materials ? mv.model.materials : [];
+    mats.forEach(m => {
+      m.pbrMetallicRoughness.setBaseColorFactor([0.098, 0.463, 0.824, 1.0]); /* blu */
+      m.pbrMetallicRoughness.setMetallicFactor(0.1);
+      m.pbrMetallicRoughness.setRoughnessFactor(0.6);
+    });
+  });
 </script>
+
 </body>
 </html>
