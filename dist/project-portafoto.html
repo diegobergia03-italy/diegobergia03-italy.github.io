@@ -11,21 +11,81 @@
 
   <style>
     .section-narrow { max-width: 980px; margin: 0 auto; }
-    .gallery-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:1rem; }
-    img{ max-width:100%; height:auto; display:block; border-radius:.5rem; object-fit:cover; }
+
+    .gallery-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:1rem;
+    }
+
+    img{
+      max-width:100%;
+      height:auto;
+      display:block;
+      border-radius:.5rem;
+      object-fit:cover;
+      cursor:pointer;
+    }
+
     model-viewer{
-      width:100%; height:320px; border-radius:.5rem; display:block;
+      width:100%;
+      height:320px;
+      border-radius:.5rem;
+      display:block;
       --poster-color: transparent;
       background:#0b1020;
     }
     @media (max-width:768px){
       model-viewer{ height:260px; }
     }
+
+    /* Lightbox come nel progetto ESP32 */
+    .lightbox{
+      display:none;
+      position:fixed;
+      inset:0;
+      z-index:1050;
+      background:rgba(0,0,0,.9);
+      justify-content:center;
+      align-items:center;
+    }
+    .lightbox.active{ display:flex; }
+
+    .lightbox img{
+      max-width:90%;
+      max-height:80vh;
+      object-fit:contain;
+      border-radius:.5rem;
+      box-shadow:0 0 20px rgba(255,255,255,.25);
+    }
+
+    .lightbox button{
+      position:absolute;
+      top:50%;
+      transform:translateY(-50%);
+      background:rgba(255,255,255,.25);
+      border:none;
+      color:#fff;
+      font-size:2rem;
+      padding:.4rem .9rem;
+      border-radius:50%;
+      cursor:pointer;
+    }
+    .lightbox .prev{ left:5%; }
+    .lightbox .next{ right:5%; }
+
+    .lightbox .close{
+      top:5%;
+      right:5%;
+      transform:none;
+      font-size:1.8rem;
+      padding:.2rem .7rem;
+    }
   </style>
 </head>
 <body>
 
-<!-- Navbar semplice -->
+<!-- Navbar -->
 <nav class="navbar navbar-expand-lg bg-secondary text-uppercase">
   <div class="container">
     <a class="navbar-brand text-white" href="index.html#portfolio">← Back to Portfolio</a>
@@ -69,6 +129,14 @@
     </div>
   </section>
 
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox">
+    <button class="prev">&#10094;</button>
+    <img id="lightbox-img" src="" alt="Expanded image">
+    <button class="next">&#10095;</button>
+    <button class="close">&times;</button>
+  </div>
+
   <!-- Download file STL -->
   <section class="section-narrow mb-5">
     <h2 class="h4 mb-3">Downloads</h2>
@@ -89,5 +157,49 @@
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Lightbox script (come ESP32 ma solo immagini) -->
+<script>
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+  const galleryItems = document.querySelectorAll('.gallery-grid img');
+  let currentIndex = 0;
+
+  galleryItems.forEach((img, index) => {
+    img.addEventListener('click', () => {
+      currentIndex = index;
+      openLightbox();
+    });
+  });
+
+  function openLightbox() {
+    lightbox.classList.add('active');
+    showCurrent();
+  }
+
+  function showCurrent() {
+    const img = galleryItems[currentIndex];
+    lightboxImg.src = img.src;
+    lightboxImg.alt = img.alt || '';
+  }
+
+  function change(dir) {
+    currentIndex = (currentIndex + dir + galleryItems.length) % galleryItems.length;
+    showCurrent();
+  }
+
+  document.querySelector('.lightbox .prev').addEventListener('click', () => change(-1));
+  document.querySelector('.lightbox .next').addEventListener('click', () => change(1));
+  document.querySelector('.lightbox .close').addEventListener('click', () => {
+    lightbox.classList.remove('active');
+  });
+
+  lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) {
+      lightbox.classList.remove('active');
+    }
+  });
+</script>
+
 </body>
 </html>
