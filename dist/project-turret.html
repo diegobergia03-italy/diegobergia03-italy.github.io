@@ -107,22 +107,23 @@
   <section class="section-narrow">
     <h2 class="h4 mb-3">Photo & Video Gallery</h2>
     <p class="text-muted">
-      Il video mostra la torretta che segue il soggetto e reagisce alle gesture. Le foto danno una vista più chiara
-      della struttura e dei dettagli meccanici.
+      Il video mostra la torretta in azione; le foto mostrano i dettagli della struttura.
     </p>
+
     <div class="gallery-grid">
-      <!-- Video come primo elemento -->
+
+      <!-- Video -->
       <video autoplay muted loop playsinline preload="auto"
         style="width:100%; border-radius:10px; display:block; object-fit:cover;">
         <source src="assets/video/turret-demo.mp4" type="video/mp4">
       </video>
 
       <!-- Foto 1 -->
-    <img src="assets/img/portfolio/turret-1.jpg" alt="Camera turret front view">
-
+      <img src="assets/img/portfolio/turret-1.jpeg" alt="Camera turret front view">
 
       <!-- Foto 2 -->
-     <img src="assets/img/portfolio/turret-2.jpg" alt="Camera turret side view">
+      <img src="assets/img/portfolio/turret-2.jpeg" alt="Camera turret side view">
+
     </div>
   </section>
 
@@ -138,16 +139,20 @@
   <!-- WIRING -->
   <section class="section-narrow">
     <h2 class="h4 mb-3">Wiring</h2>
+
     <p class="text-muted">
-      La parte di visione elabora il flusso della videocamera, riconosce il soggetto e le gesture della mano.
-      I comandi di angolo e zoom vengono poi inviati al microcontrollore che pilota i motori della torretta.
+      La parte di visione elabora il flusso della videocamera, riconosce il soggetto e le gesture.
+      I comandi vengono poi inviati al microcontrollore che muove la torretta.
     </p>
+
     <ul class="text-muted">
-      <li>Board di visione (es. Jetson / mini PC) con videocamera USB</li>
-      <li>Microcontrollore (es. ESP32) per il controllo motori</li>
-      <li>Servo o motore per la rotazione (e tilt, se presente)</li>
+      <li>Board di visione con videocamera USB</li>
+      <li>Microcontrollore ESP32 per il controllo motori</li>
+      <li>Servo/motore per la rotazione</li>
       <li>Alimentazione separata per motori e logica</li>
     </ul>
+
+    <!-- Wiring image -->
     <img src="assets/img/portfolio/turret-wiring.jpeg"
          alt="Wiring diagram for the camera turret"
          class="shadow-sm mt-2">
@@ -155,4 +160,92 @@
 
   <!-- CODE -->
   <section class="section-narrow">
-    <h2 class="h4 mb-3">Co
+    <h2 class="h4 mb-3">Code</h2>
+
+    <p class="text-muted">
+      Il sistema è diviso in due componenti: visione artificiale e controllo motori.
+    </p>
+
+    <div class="d-flex justify-content-between align-items-center mb-2">
+      <h3 class="h6 m-0">Main Script</h3>
+      <a class="btn btn-sm btn-outline-secondary" target="_blank" rel="noopener"
+         href="assets/code/auto-tracking-turret.py">Apri file</a>
+    </div>
+
+    <pre class="codebox"><code id="code-turret"># Loading...</code></pre>
+  </section>
+
+</main>
+
+<footer class="text-center py-4 bg-light">
+  <div class="container">
+    <a href="index.html#portfolio" class="btn btn-primary">← Back to Portfolio</a>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js"></script>
+
+<!-- Lightbox Script -->
+<script>
+  const lightbox = document.getElementById('lightbox');
+  const imgBox = document.getElementById('lightbox-img');
+  const videoBox = document.getElementById('lightbox-video');
+  const mediaItems = document.querySelectorAll('.gallery-grid img, .gallery-grid video');
+  let current = 0;
+
+  mediaItems.forEach((el, i) => {
+    el.addEventListener('click', () => { current = i; openLightbox(); });
+  });
+
+  function openLightbox(){ lightbox.classList.add('active'); showCurrent(); }
+
+  function showCurrent(){
+    const el = mediaItems[current];
+    if (el.tagName === 'IMG') {
+      videoBox.pause(); videoBox.removeAttribute('src'); videoBox.load();
+      videoBox.style.display = 'none'; imgBox.style.display = 'block'; imgBox.src = el.src;
+    } else {
+      imgBox.removeAttribute('src'); imgBox.style.display = 'none';
+      videoBox.style.display = 'block';
+      const src = el.querySelector('source') ? el.querySelector('source').src : el.src;
+      videoBox.src = src; videoBox.muted = true; videoBox.loop = true;
+      videoBox.play().catch(()=>{});
+    }
+  }
+
+  document.querySelector('.lightbox .close').onclick = () => {
+    lightbox.classList.remove('active');
+    videoBox.pause();
+  };
+  document.querySelector('.lightbox .prev').onclick  = () => change(-1);
+  document.querySelector('.lightbox .next').onclick  = () => change(1);
+
+  function change(dir){
+    current = (current + dir + mediaItems.length) % mediaItems.length;
+    showCurrent();
+  }
+
+  lightbox.addEventListener('click', e => {
+    if (e.target === lightbox) {
+      lightbox.classList.remove('active');
+      videoBox.pause();
+    }
+  });
+
+  // Caricamento codice
+  (async () => {
+    try {
+      const resp = await fetch('assets/code/auto-tracking-turret.py', { cache: 'no-store' });
+      if (!resp.ok) throw new Error('HTTP ' + resp.status);
+      const text = await resp.text();
+      document.getElementById('code-turret').textContent = text;
+    } catch (e) {
+      document.getElementById('code-turret').textContent =
+        '# Impossibile caricare il file del codice.\n# Verifica percorso: dist/assets/code/auto-tracking-turret.py';
+    }
+  })();
+</script>
+
+</body>
+</html>
