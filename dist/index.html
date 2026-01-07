@@ -2,10 +2,6 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" /><!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <title>Diego Bergia — Electronics & Automation Portfolio</title>
     <meta name="description" content="Projects combining ESP32, Jetson Nano, 3D design and practical automation. Prototypes, electronics, and interactive systems by Diego Bergia." />
@@ -18,13 +14,13 @@
   </head>
 
   <body id="page-top">
-
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
       <div class="container">
         <a class="navbar-brand" href="#page-top">Diego Bergia</a>
         <button class="navbar-toggler bg-primary text-white rounded"
-          type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive">
+          type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
+          aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           Menu <i class="fas fa-bars"></i>
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
@@ -33,7 +29,9 @@
             <li class="nav-item"><a class="nav-link rounded" href="#about">About</a></li>
             <li class="nav-item"><a class="nav-link rounded" href="#skills">Skills</a></li>
             <li class="nav-item"><a class="nav-link rounded" href="#contact">Contact</a></li>
-            <li class="nav-item"><a class="nav-link rounded" href="#cv"><i class="fas fa-file-alt me-1"></i> CV</a></li>
+            <li class="nav-item">
+              <a class="nav-link rounded" href="#cv"><i class="fas fa-file-alt me-1"></i> CV</a>
+            </li>
           </ul>
         </div>
       </div>
@@ -76,7 +74,7 @@
                   <small>Temperature / Humidity</small>
                 </div>
               </div>
-              <img class="img-fluid" src="assets/img/portfolio/esp32-thumb.jpeg" alt="">
+              <img class="img-fluid" src="assets/img/portfolio/esp32-thumb.jpeg" alt="ESP32 Weather Station thumbnail" />
             </a>
           </div>
 
@@ -89,7 +87,7 @@
                   <small>3D printed frame</small>
                 </div>
               </div>
-              <img class="img-fluid" src="assets/img/portfolio/portafoto-thumb.jpeg" alt="">
+              <img class="img-fluid" src="assets/img/portfolio/portafoto-thumb.jpeg" alt="Portafoto LED thumbnail" />
             </a>
           </div>
 
@@ -102,192 +100,6 @@
                   <small>Gesture control & tracking</small>
                 </div>
               </div>
-              <img class="img-fluid" src="assets/img/portfolio/turret-thumb.jpeg" alt="">
-            </a>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- WORKING PROGRESS -->
-    <section class="page-section portfolio bg-light">
-      <div class="container">
-        <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Working Progress</h2>
-        <div class="divider-custom my-3">
-          <div class="divider-custom-line"></div>
-          <div class="divider-custom-icon"><i class="fas fa-microchip"></i></div>
-          <div class="divider-custom-line"></div>
-        </div>
-
-        <div class="row justify-content-center">
-          <div class="col-md-6 col-lg-4 mb-5">
-            <a class="portfolio-item mx-auto portfolio-card" href="project-braccio-robotico.html">
-              <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                <div class="portfolio-item-caption-content text-center text-white">
-                  <h3 class="h5 m-0">
-                    Braccio Robotico 5 Assi
-                    <span class="badge bg-warning text-dark ms-2">WIP</span>
-                  </h3>
-                  <small>Mechanical design & automation</small>
-                </div>
-              </div>
-              <img class="img-fluid" src="assets/img/portfolio/braccio-wip-thumb.jpeg" alt="">
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- About / Skills / Contact / CV -->
-    <!-- (identici ai tuoi, NON li riscrivo per brevità) -->
-
-    <!-- CONTACT SECTION -->
-    <section class="page-section" id="contact">
-      <div class="container text-center">
-        <h2 class="page-section-heading text-uppercase text-secondary mb-0">Contact Me</h2>
-        <div class="divider-custom my-3"></div>
-        <button class="btn btn-primary btn-xl" data-bs-toggle="modal" data-bs-target="#contactChooser">
-          <i class="fas fa-envelope me-2"></i> Contact me
-        </button>
-      </div>
-    </section>
-
-    <!-- CONTACT MODAL -->
-    <div class="modal fade" id="contactChooser" tabindex="-1">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title">Contact Diego</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-          </div>
-          <div class="modal-body">
-            <div class="d-grid gap-2">
-              <a class="btn btn-primary"
-                 href="mailto:diego.bergia.03@gmail.com?subject=Hello%20Diego">
-                Default Mail App
-              </a>
-              <a class="btn btn-outline-secondary"
-                 href="https://mail.google.com/mail/?view=cm&fs=1&to=diego.bergia.03@gmail.com"
-                 target="_blank">Gmail</a>
-              <a class="btn btn-outline-secondary"
-                 href="https://outlook.live.com/mail/0/deeplink/compose?to=diego.bergia.03@gmail.com"
-                 target="_blank">Outlook</a>
-              <a class="btn btn-outline-secondary"
-                 href="https://compose.mail.yahoo.com/?to=diego.bergia.03@gmail.com"
-                 target="_blank">Yahoo Mail</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="js/scripts.js"></script>
-
-  </body>
-</html>
-
-    <title>Diego Bergia — Electronics & Automation Portfolio</title>
-    <meta name="description" content="Projects combining ESP32, Jetson Nano, 3D design and practical automation. Prototypes, electronics, and interactive systems by Diego Bergia." />
-    <meta name="author" content="Diego Bergia" />
-    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
-    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
-    <link href="css/styles.css" rel="stylesheet" />
-  </head>
-
-  <body id="page-top">
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
-      <div class="container">
-        <a class="navbar-brand" href="#page-top">Diego Bergia</a>
-        <button class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded"
-          type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
-          aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-          Menu <i class="fas fa-bars"></i>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-          <ul class="navbar-nav ms-auto">
-            <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#portfolio">Portfolio</a></li>
-            <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#about">About</a></li>
-            <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#skills">Skills</a></li>
-            <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#contact">Contact</a></li>
-            <li class="nav-item mx-0 mx-lg-1">
-              <a class="nav-link py-3 px-0 px-lg-3 rounded" href="#cv">
-                <i class="fas fa-file-alt me-1"></i> CV
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-
-    <!-- Masthead -->
-    <header class="masthead bg-primary text-white text-center">
-      <div class="container d-flex align-items-center flex-column">
-        <img class="masthead-avatar mb-5" src="assets/profile.jpg?v=1" alt="Profile picture of Diego Bergia" />
-        <h1 class="masthead-heading text-uppercase mb-0">Diego Bergia</h1>
-        <div class="divider-custom divider-light my-3">
-          <div class="divider-custom-line"></div>
-          <div class="divider-custom-icon"><i class="fas fa-microchip"></i></div>
-          <div class="divider-custom-line"></div>
-        </div>
-        <p class="masthead-subheading font-weight-light mb-0">
-          Electronics & automation maker — I design and build interactive systems combining ESP32, Jetson Nano, 3D design and practical problem-solving.
-        </p>
-      </div>
-    </header>
-
-    <!-- Portfolio -->
-    <section class="page-section portfolio" id="portfolio">
-      <div class="container">
-        <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Portfolio</h2>
-        <div class="divider-custom my-3">
-          <div class="divider-custom-line"></div>
-          <div class="divider-custom-icon"><i class="fas fa-microchip"></i></div>
-          <div class="divider-custom-line"></div>
-        </div>
-
-        <div class="row justify-content-center">
-
-          <!-- ESP32 Weather Station -->
-          <div class="col-md-6 col-lg-4 mb-5">
-            <a class="portfolio-item mx-auto portfolio-card" href="project-esp32.html">
-              <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                <div class="portfolio-item-caption-content text-center text-white">
-                  <h3 class="h5 m-0">ESP32 Weather Station</h3>
-                  <small>Temperature / Humidity + 3D Case</small>
-                </div>
-              </div>
-              <img class="img-fluid" src="assets/img/portfolio/esp32-thumb.jpeg" alt="ESP32 Weather Station thumbnail" />
-            </a>
-          </div>
-
-          <!-- Portafoto LED -->
-          <div class="col-md-6 col-lg-4 mb-5">
-            <a class="portfolio-item mx-auto portfolio-card" href="project-portafoto.html">
-              <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                <div class="portfolio-item-caption-content text-center text-white">
-                  <h3 class="h5 m-0">Portafoto LED</h3>
-                  <small>Cornice 3D illuminata</small>
-                </div>
-              </div>
-              <img class="img-fluid" src="assets/img/portfolio/portafoto-thumb.jpeg" alt="Portafoto LED thumbnail" />
-            </a>
-          </div>
-
-          <!-- Auto-Tracking Camera Turret (NEW) -->
-          <div class="col-md-6 col-lg-4 mb-5">
-            <a class="portfolio-item mx-auto portfolio-card" href="project-turret.html">
-              <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                <div class="portfolio-item-caption-content text-center text-white">
-                  <h3 class="h5 m-0">Auto-Tracking Camera Turret</h3>
-                  <small>Gesture zoom & tracking</small>
-                </div>
-              </div>
               <img class="img-fluid" src="assets/img/portfolio/turret-thumb.jpeg" alt="Auto-Tracking Camera Turret thumbnail" />
             </a>
           </div>
@@ -296,7 +108,7 @@
       </div>
     </section>
 
-    <!-- WORKING PROGRESS (ADDED) -->
+    <!-- WORKING PROGRESS -->
     <section class="page-section portfolio bg-light" id="wip">
       <div class="container">
         <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Working Progress</h2>
@@ -307,8 +119,6 @@
         </div>
 
         <div class="row justify-content-center">
-
-          <!-- Braccio Robotico 5 Assi -->
           <div class="col-md-6 col-lg-4 mb-5">
             <a class="portfolio-item mx-auto portfolio-card" href="project-braccio-robotico.html">
               <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
@@ -323,7 +133,6 @@
               <img class="img-fluid" src="assets/img/portfolio/braccio-wip-thumb.jpeg" alt="Braccio Robotico 5 Assi thumbnail" />
             </a>
           </div>
-
         </div>
       </div>
     </section>
@@ -406,6 +215,45 @@
         </div>
       </div>
     </section>
+
+    <!-- CONTACT MODAL (Contact Chooser) -->
+    <div class="modal fade" id="contactChooser" tabindex="-1" aria-hidden="true" aria-labelledby="contactChooserLabel">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="contactChooserLabel">Contact Diego</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="d-grid gap-2">
+              <a class="btn btn-primary"
+                 href="mailto:diego.bergia.03@gmail.com?subject=Hello%20Diego&body=Hi%20Diego,%0A%0A"
+                 target="_blank" rel="noopener">
+                <i class="fas fa-envelope me-2"></i> Default Mail App
+              </a>
+
+              <a class="btn btn-outline-secondary"
+                 href="https://mail.google.com/mail/?view=cm&fs=1&to=diego.bergia.03@gmail.com&su=Hello%20Diego&body=Hi%20Diego,%0A%0A"
+                 target="_blank" rel="noopener">
+                <i class="fab fa-google me-2"></i> Gmail
+              </a>
+
+              <a class="btn btn-outline-secondary"
+                 href="https://outlook.live.com/mail/0/deeplink/compose?to=diego.bergia.03@gmail.com&subject=Hello%20Diego&body=Hi%20Diego,%0A%0A"
+                 target="_blank" rel="noopener">
+                <i class="fab fa-microsoft me-2"></i> Outlook
+              </a>
+
+              <a class="btn btn-outline-secondary"
+                 href="https://compose.mail.yahoo.com/?to=diego.bergia.03@gmail.com&subject=Hello%20Diego&body=Hi%20Diego,%0A%0A"
+                 target="_blank" rel="noopener">
+                <i class="fab fa-yahoo me-2"></i> Yahoo Mail
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <!-- CV -->
     <section class="page-section" id="cv">
@@ -506,6 +354,5 @@
         z-index: 1;
       }
     </style>
-
   </body>
 </html>
