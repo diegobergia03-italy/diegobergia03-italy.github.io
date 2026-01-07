@@ -1,130 +1,166 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <title>Diego Bergia — Electronics & Automation Portfolio</title>
-    <meta name="description" content="Projects combining ESP32, Jetson Nano, 3D design and practical automation. Prototypes, electronics, and interactive systems by Diego Bergia." />
-    <meta name="author" content="Diego Bergia" />
-    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
-    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
-    <link href="css/styles.css" rel="stylesheet" />
-  </head>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <title>Diego Bergia — Electronics & Automation Portfolio</title>
+  <meta name="description" content="Projects combining ESP32, Jetson Nano, 3D design and practical automation." />
+  <meta name="author" content="Diego Bergia" />
+  <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+  <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet"/>
+  <link href="css/styles.css" rel="stylesheet"/>
+</head>
 
-  <body id="page-top">
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
-      <div class="container">
-        <a class="navbar-brand" href="#page-top">Diego Bergia</a>
-        <button class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded"
-          type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive">
-          Menu <i class="fas fa-bars"></i>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-          <ul class="navbar-nav ms-auto">
-            <li class="nav-item"><a class="nav-link rounded" href="#portfolio">Portfolio</a></li>
-            <li class="nav-item"><a class="nav-link rounded" href="#wip">Working Progress</a></li>
-            <li class="nav-item"><a class="nav-link rounded" href="#about">About</a></li>
-            <li class="nav-item"><a class="nav-link rounded" href="#skills">Skills</a></li>
-            <li class="nav-item"><a class="nav-link rounded" href="#contact">Contact</a></li>
-            <li class="nav-item"><a class="nav-link rounded" href="#cv"><i class="fas fa-file-alt me-1"></i> CV</a></li>
-          </ul>
-        </div>
-      </div>
-    </nav>
+<body id="page-top">
 
-    <!-- Masthead -->
-    <header class="masthead bg-primary text-white text-center">
-      <div class="container d-flex align-items-center flex-column">
-        <img class="masthead-avatar mb-5" src="assets/profile.jpg?v=1" alt="Profile picture of Diego Bergia" />
-        <h1 class="masthead-heading text-uppercase mb-0">Diego Bergia</h1>
-        <p class="masthead-subheading font-weight-light mb-0">
-          Electronics & automation maker — I design and build interactive systems combining ESP32, Jetson Nano, 3D design and practical problem-solving.
-        </p>
-      </div>
-    </header>
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
+  <div class="container">
+    <a class="navbar-brand" href="#page-top">Diego Bergia</a>
+    <button class="navbar-toggler bg-primary text-white rounded"
+      type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive">
+      Menu <i class="fas fa-bars"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link rounded" href="#portfolio">Portfolio</a></li>
+        <li class="nav-item"><a class="nav-link rounded" href="#wip">Working Progress</a></li>
+        <li class="nav-item"><a class="nav-link rounded" href="#about">About</a></li>
+        <li class="nav-item"><a class="nav-link rounded" href="#skills">Skills</a></li>
+        <li class="nav-item"><a class="nav-link rounded" href="#contact">Contact</a></li>
+        <li class="nav-item"><a class="nav-link rounded" href="#cv"><i class="fas fa-file-alt me-1"></i> CV</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
 
-    <!-- PORTFOLIO (FINISHED PROJECTS) -->
-    <section class="page-section portfolio" id="portfolio">
-      <div class="container">
-        <h2 class="page-section-heading text-center text-uppercase text-secondary">Portfolio</h2>
+<!-- HEADER -->
+<header class="masthead bg-primary text-white text-center">
+  <div class="container d-flex align-items-center flex-column">
+    <img class="masthead-avatar mb-5" src="assets/profile.jpg?v=1" alt="Profile picture"/>
+    <h1 class="masthead-heading text-uppercase mb-0">Diego Bergia</h1>
+    <p class="masthead-subheading font-weight-light mb-0">
+      Electronics & automation maker — interactive systems, prototyping and robotics.
+    </p>
+  </div>
+</header>
 
-        <div class="row justify-content-center">
+<!-- PORTFOLIO (FINISHED PROJECTS) -->
+<section class="page-section portfolio" id="portfolio">
+  <div class="container">
+    <h2 class="page-section-heading text-center text-uppercase text-secondary">Portfolio</h2>
 
-          <!-- ESP32 Weather Station -->
-          <div class="col-md-6 col-lg-4 mb-5">
-            <a class="portfolio-item mx-auto portfolio-card" href="project-esp32.html">
-              <img class="img-fluid" src="assets/img/portfolio/esp32-thumb.jpeg" alt="">
-              <div class="portfolio-item-caption text-center text-white">
-                <h3 class="h5 m-0">ESP32 Weather Station</h3>
-                <small>Temperature / Humidity</small>
-              </div>
-            </a>
+    <div class="row justify-content-center">
+
+      <div class="col-md-6 col-lg-4 mb-5">
+        <a class="portfolio-item mx-auto portfolio-card" href="project-esp32.html">
+          <img class="img-fluid" src="assets/img/portfolio/esp32-thumb.jpeg" alt="">
+          <div class="portfolio-item-caption text-center text-white">
+            <h3 class="h5 m-0">ESP32 Weather Station</h3>
+            <small>Temperature & humidity</small>
           </div>
-
-          <!-- Portafoto LED -->
-          <div class="col-md-6 col-lg-4 mb-5">
-            <a class="portfolio-item mx-auto portfolio-card" href="project-portafoto.html">
-              <img class="img-fluid" src="assets/img/portfolio/portafoto-thumb.jpeg" alt="">
-              <div class="portfolio-item-caption text-center text-white">
-                <h3 class="h5 m-0">Portafoto LED</h3>
-                <small>3D printed illuminated frame</small>
-              </div>
-            </a>
-          </div>
-
-          <!-- Camera Turret -->
-          <div class="col-md-6 col-lg-4 mb-5">
-            <a class="portfolio-item mx-auto portfolio-card" href="project-turret.html">
-              <img class="img-fluid" src="assets/img/portfolio/turret-thumb.jpeg" alt="">
-              <div class="portfolio-item-caption text-center text-white">
-                <h3 class="h5 m-0">Auto-Tracking Camera Turret</h3>
-                <small>Gesture control & tracking</small>
-              </div>
-            </a>
-          </div>
-
-        </div>
+        </a>
       </div>
-    </section>
 
-    <!-- WORKING PROGRESS -->
-    <section class="page-section bg-light" id="wip">
-      <div class="container">
-        <h2 class="page-section-heading text-center text-uppercase text-secondary">
-          Working Progress
-        </h2>
-        <p class="text-center text-muted mb-5">
-          Projects currently under development and continuously evolving.
-        </p>
-
-        <div class="row justify-content-center">
-
-          <!-- Braccio Robotico 5 Assi -->
-          <div class="col-md-6 col-lg-4 mb-5">
-            <a class="portfolio-item mx-auto portfolio-card" href="project-braccio-robotico.html">
-              <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                <div class="portfolio-item-caption-content text-center text-white">
-                  <h3 class="h5 m-0">
-                    Braccio Robotico 5 Assi
-                    <span class="badge bg-warning text-dark ms-2">WIP</span>
-                  </h3>
-                  <small>Mechanical design & automation</small>
-                </div>
-              </div>
-              <img class="img-fluid" src="assets/img/portfolio/braccio-wip-thumb.jpeg" alt="Braccio robotico 5 assi thumbnail" />
-            </a>
+      <div class="col-md-6 col-lg-4 mb-5">
+        <a class="portfolio-item mx-auto portfolio-card" href="project-portafoto.html">
+          <img class="img-fluid" src="assets/img/portfolio/portafoto-thumb.jpeg" alt="">
+          <div class="portfolio-item-caption text-center text-white">
+            <h3 class="h5 m-0">Portafoto LED</h3>
+            <small>3D printed frame</small>
           </div>
-
-        </div>
+        </a>
       </div>
-    </section>
 
-    <!-- ABOUT / SKILLS / CONTACT / CV -->
-    <!-- (resto invariato rispetto al tuo file originale) -->
+      <div class="col-md-6 col-lg-4 mb-5">
+        <a class="portfolio-item mx-auto portfolio-card" href="project-turret.html">
+          <img class="img-fluid" src="assets/img/portfolio/turret-thumb.jpeg" alt="">
+          <div class="portfolio-item-caption text-center text-white">
+            <h3 class="h5 m-0">Auto-Tracking Camera Turret</h3>
+            <small>Vision & gesture control</small>
+          </div>
+        </a>
+      </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-  </body>
+    </div>
+  </div>
+</section>
+
+<!-- WORKING PROGRESS -->
+<section class="page-section bg-light" id="wip">
+  <div class="container">
+    <h2 class="page-section-heading text-center text-uppercase text-secondary">
+      Working Progress
+    </h2>
+    <p class="text-center text-muted mb-5">
+      Projects currently under development.
+    </p>
+
+    <div class="row justify-content-center">
+      <div class="col-md-6 col-lg-4 mb-5">
+        <a class="portfolio-item mx-auto portfolio-card" href="project-braccio-robotico.html">
+          <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+            <div class="portfolio-item-caption-content text-center text-white">
+              <h3 class="h5 m-0">
+                Braccio Robotico 5 Assi
+                <span class="badge bg-warning text-dark ms-2">WIP</span>
+              </h3>
+              <small>Mechanical design & automation</small>
+            </div>
+          </div>
+          <img class="img-fluid" src="assets/img/portfolio/braccio-wip-thumb.jpeg" alt="">
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="page-section bg-primary text-white" id="about">
+  <div class="container text-center">
+    <h2 class="page-section-heading text-uppercase text-white">About Me</h2>
+    <p class="lead">
+      Electronics and automation enthusiast focused on prototyping, robotics and interactive systems.
+    </p>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section class="page-section text-center" id="skills">
+  <div class="container">
+    <h2 class="page-section-heading text-uppercase text-secondary">Skills</h2>
+    <p class="text-muted">ESP32 • Robotics • 3D Design • Python • Automation</p>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="page-section" id="contact">
+  <div class="container text-center">
+    <h2 class="page-section-heading text-uppercase text-secondary">Contact Me</h2>
+    <button class="btn btn-primary btn-xl" data-bs-toggle="modal" data-bs-target="#contactChooser">
+      <i class="fas fa-envelope me-2"></i> Contact me
+    </button>
+  </div>
+</section>
+
+<!-- CV -->
+<section class="page-section" id="cv">
+  <div class="container text-center">
+    <h2 class="page-section-heading text-uppercase text-secondary">Curriculum Vitae</h2>
+    <a class="btn btn-primary" href="assets/cv/Diego-Bergia-CV.pdf" target="_blank">View PDF</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer text-center py-5" style="background:#263238;color:#E3F2FD;">
+  <div class="container">
+    <small>© Diego Bergia 2025</small>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
 </html>
