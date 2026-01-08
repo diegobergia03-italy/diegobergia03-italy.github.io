@@ -3,9 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Braccio Robotico 5 Assi — Working Progress</title>
+  <title>Braccio Robotico 5 Assi — Work in Progress</title>
 
-  <!-- Keep same style system -->
   <link href="css/styles.css" rel="stylesheet" />
 
   <style>
@@ -45,7 +44,8 @@
       overflow: hidden;
       background: #f2f2f2;
     }
-    .wip-media img, .wip-media video {
+    .wip-media img,
+    .wip-media video {
       width: 100%;
       height: auto;
       display: block;
@@ -77,103 +77,87 @@
   <!-- Header -->
   <header class="wip-hero">
     <h1>Braccio Robotico 5 Assi <span class="badge">WIP</span></h1>
-    <p>Prototype development log — cycloidal drive experiments, mechanics and motion tests.</p>
+    <p>Work in Progress — cycloidal drive experiments, mechanics and motion tests.</p>
   </header>
 
   <main class="wip-wrap">
 
-    <!-- 1) Start with story + first sketch (final concept) -->
+    <!-- 1) Concept & goal -->
     <section class="wip-section">
       <div class="wip-card">
         <h2 class="wip-title">1) Concept & Goal</h2>
         <div class="wip-media">
-          <img src="assets/img/braccio-robotico/sketch-concept.jpeg" alt="Concept sketch of the 5-axis robotic arm" />
+          <img src="assets/img/braccio-robotico/sketch-concept.jpeg"
+               alt="Concept sketch of the 5-axis robotic arm" />
         </div>
         <p class="wip-caption">
-          This is the first concept sketch showing what I want the final 5-axis robotic arm to become.
-          The goal is a compact, modular structure with a strong focus on cycloidal drives and reliable motion.
+          This sketch shows the final concept of the 5-axis robotic arm.
+          The objective is a compact, modular structure focused on cycloidal drives
+          and reliable, repeatable motion.
         </p>
       </div>
     </section>
 
-    <!-- 2) Photo of many cycloidals + description -->
+    <!-- 2) Cycloidal iterations -->
     <section class="wip-section">
       <div class="wip-card">
         <h2 class="wip-title">2) Cycloidal Drive Iterations</h2>
         <div class="wip-media">
-          <img src="assets/img/braccio-robotico/cycloidal-iterations.jpeg" alt="Multiple cycloidal drive prototypes printed and tested" />
+          <img src="assets/img/braccio-robotico/cycloidal-iterations.jpeg"
+               alt="Cycloidal drive prototypes" />
         </div>
         <p class="wip-caption">
-          Here you can see the different cycloidal prototypes I printed. I iterated on geometry, tolerances and assembly
-          until I found a solution that felt smooth, strong and “print-friendly”.
-          (Add here what changed between versions: bearing seats, clearances, pin count, materials, etc.)
+          Multiple cycloidal gear prototypes printed to test geometry, tolerances
+          and assembly. Each iteration helped refine smoothness, backlash and strength.
         </p>
       </div>
     </section>
 
-    <!-- 3) Video: only cycloidal movement -->
+    <!-- 3) Cycloidal motion video -->
     <section class="wip-section">
       <div class="wip-card">
         <h2 class="wip-title">3) Cycloidal Movement Test</h2>
         <div class="wip-media">
-          <video controls playsinline>
+          <video controls muted playsinline>
             <source src="assets/video/braccio-robotico/cycloidal-motion.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
         </div>
         <p class="wip-caption">
-          Close-up test showing only the cycloidal movement. This helped me confirm smoothness, backlash and stability.
+          Close-up test showing only the cycloidal movement, used to evaluate smoothness
+          and mechanical behavior.
         </p>
       </div>
     </section>
 
-    <!-- 4) Photo: current state (shoulder + elbow) -->
+    <!-- 4) Current state -->
     <section class="wip-section">
       <div class="wip-card">
         <h2 class="wip-title">4) Current State: Shoulder & Elbow</h2>
         <div class="wip-media">
-          <img src="assets/img/braccio-robotico/arm-current-state.jpeg" alt="Current build state showing shoulder and elbow of the arm" />
+          <img src="assets/img/braccio-robotico/arm-current-state.jpeg"
+               alt="Current state of the robotic arm" />
         </div>
         <p class="wip-caption">
-          This is where the project is now: shoulder and elbow assembled and tested. Next steps are improving rigidity,
-          cable routing and preparing the other joints.
+          Current build status showing shoulder and elbow assemblies.
+          The next steps focus on rigidity improvements and integration of the remaining axes.
         </p>
       </div>
     </section>
 
-    <!-- 5) Small text + video: full arm motion -->
+    <!-- 5) Full arm motion -->
     <section class="wip-section">
       <div class="wip-card">
-        <h2 class="wip-title">5) Motion Test</h2>
+        <h2 class="wip-title">5) Arm Motion Test</h2>
         <div class="wip-media">
-          <video controls playsinline>
+          <video controls muted playsinline>
             <source src="assets/video/braccio-robotico/arm-motion.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
         </div>
         <p class="wip-caption">
-          Full motion test video. This is useful to evaluate joint smoothness, alignment and any mechanical flex.
-        </p>
-      </div>
-    </section>
-
-    <!-- 6) Extra sketches: assembly + cycloidal driver assembly -->
-    <section class="wip-section">
-      <div class="wip-card">
-        <h2 class="wip-title">6) Design Sketches</h2>
-
-        <div class="wip-media" style="margin-bottom: 1rem;">
-          <img src="assets/img/braccio-robotico/sketch-assembly.jpeg" alt="Assembly sketch of the robotic arm" />
-        </div>
-        <p class="wip-caption">
-          Sketch of the full assembly of the arm (layout, joints, proportions).
-        </p>
-
-        <div class="wip-media" style="margin-top: 1.25rem; margin-bottom: 1rem;">
-          <img src="assets/img/braccio-robotico/sketch-cycloidal-driver.jpeg" alt="Sketch of the cycloidal driver assembly" />
-        </div>
-        <p class="wip-caption">
-          Sketch explaining how the cycloidal driver assembly is built and how the components fit together.
+          Full arm motion test used to verify joint alignment, movement fluidity
+          and overall mechanical stability.
         </p>
       </div>
     </section>
