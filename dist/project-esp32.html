@@ -4,7 +4,7 @@
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>ESP32 Weather Station — Project</title>
-  <meta name="description" content="Mini stazione meteo con ESP32: modello 3D ruotabile, galleria foto e video, schema e codice Arduino.">
+  <meta name="description" content="Mini weather station based on ESP32: rotatable 3D model, photo & video gallery, wiring and Arduino code.">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
   <link href="css/styles.css" rel="stylesheet"/>
   <script type="module" src="https://cdn.jsdelivr.net/npm/@google/model-viewer@3.4.0/dist/model-viewer.min.js"></script>
@@ -64,6 +64,7 @@
     }
   </style>
 </head>
+
 <body>
 <nav class="navbar navbar-expand-lg bg-secondary text-uppercase">
   <div class="container">
@@ -75,9 +76,9 @@
   <div class="container">
     <h1 class="mb-2">ESP32 Weather Station</h1>
     <p class="lead mb-0">
-      Piccola stazione meteo basata su ESP32, capace di misurare temperatura e umidità tramite sensore DHT11
-      e mostrare i dati su un display OLED. Il tutto è racchiuso in un case progettato su SolidWorks e stampato
-      in 3D, con prese d’aria per una lettura accurata.
+      A compact ESP32-based weather station capable of measuring temperature and humidity using a DHT11 sensor
+      and displaying the data on an OLED screen. The electronics are housed in a custom enclosure designed in
+      SolidWorks and 3D printed, featuring ventilation slots to ensure accurate sensor readings.
     </p>
   </div>
 </header>
@@ -106,13 +107,12 @@
   <section class="section-narrow">
     <h2 class="h4 mb-3">Photo & Video Gallery</h2>
     <div class="gallery-grid">
-      <video autoplay muted loop playsinline preload="auto"
-        style="width:100%; border-radius:10px; display:block; object-fit:cover;">
+      <video autoplay muted loop playsinline preload="auto">
         <source src="assets/video/esp32-demo.mp4" type="video/mp4">
       </video>
       <img src="assets/img/portfolio/esp32-front.jpeg" alt="Front view">
       <img src="assets/img/portfolio/esp32-back.jpeg" alt="Back view">
-      <img src="assets/img/portfolio/esp32-wiring.jpeg" alt="Wiring photo">
+      <img src="assets/img/portfolio/esp32-wiring.jpeg" alt="Internal wiring">
     </div>
   </section>
 
@@ -128,7 +128,9 @@
   <!-- WIRING -->
   <section class="section-narrow">
     <h2 class="h4 mb-3">Wiring</h2>
-    <img src="assets/img/portfolio/esp32-wiring-tinkercad.jpeg" alt="Tinkercad wiring screenshot" class="shadow-sm">
+    <img src="assets/img/portfolio/esp32-wiring-tinkercad.jpeg"
+         alt="Wiring diagram created in Tinkercad"
+         class="shadow-sm">
   </section>
 
   <!-- CODE -->
@@ -136,25 +138,36 @@
     <h2 class="h4 mb-3">Code</h2>
     <div class="d-flex justify-content-between align-items-center mb-2">
       <h3 class="h6 m-0">Arduino Code</h3>
-      <a class="btn btn-sm btn-outline-secondary" target="_blank" rel="noopener" href="assets/code/esp32-weather-station.ino">Apri file</a>
+      <a class="btn btn-sm btn-outline-secondary"
+         target="_blank" rel="noopener"
+         href="assets/code/esp32-weather-station.ino">
+        Open file
+      </a>
     </div>
-    <pre class="codebox"><code id="code-esp32">// Caricamento...</code></pre>
+    <pre class="codebox"><code id="code-esp32">// Loading...</code></pre>
   </section>
 
-<!-- DOWNLOAD STL -->
-<section class="section-narrow mb-0">
-  <h2 class="h4 mb-3">Downloads</h2>
+  <!-- DOWNLOAD STL -->
+  <section class="section-narrow mb-0">
+    <h2 class="h4 mb-3">Downloads</h2>
 
-  <p class="text-muted small mb-2">
-    I due pezzi che compongono la stazione meteo:
-  </p>
+    <p class="text-muted small mb-2">
+      The two parts that make up the weather station enclosure:
+    </p>
 
-  <ul class="list-unstyled">
-    <li><a href="assets/stl/case-sensore-umidita-temperatura.stl" download>Case sensore umidità e temperatura (.stl)</a></li>
-    <li><a href="assets/stl/tappo-case-sensore-umidita-temperatura.stl" download>Tappo del case (.stl)</a></li>
-  </ul>
-</section>
-
+    <ul class="list-unstyled">
+      <li>
+        <a href="assets/stl/case-sensore-umidita-temperatura.stl" download>
+          Main enclosure (.stl)
+        </a>
+      </li>
+      <li>
+        <a href="assets/stl/tappo-case-sensore-umidita-temperatura.stl" download>
+          Back cover (.stl)
+        </a>
+      </li>
+    </ul>
+  </section>
 
 </main>
 
@@ -214,20 +227,19 @@
     }
   });
 
-  // 🎨 Modello 3D bianco (rimuove l'azzurrino)
+  // 🎨 Force neutral white material on 3D model
   const mv = document.querySelector('model-viewer');
   mv.addEventListener('load', () => {
     const mats = mv.model && mv.model.materials ? mv.model.materials : [];
     mats.forEach(m => {
-      // Bianco neutro
-      m.pbrMetallicRoughness.setBaseColorFactor([1.0, 1.0, 1.0, 1.0]);
-      m.pbrMetallicRoughness.setMetallicFactor(0.0);
+      m.pbrMetallicRoughness.setBaseColorFactor([1,1,1,1]);
+      m.pbrMetallicRoughness.setMetallicFactor(0);
       m.pbrMetallicRoughness.setRoughnessFactor(0.7);
     });
   });
 </script>
 
-<!-- Caricamento codice Arduino -->
+<!-- Load Arduino code -->
 <script>
   (async () => {
     try {
@@ -237,7 +249,7 @@
       document.getElementById('code-esp32').textContent = text;
     } catch (e) {
       document.getElementById('code-esp32').textContent =
-        '// Impossibile caricare il file .ino.\n// Verifica percorso: dist/assets/code/esp32-weather-station.ino';
+        '// Unable to load the .ino file.\n// Check path: dist/assets/code/esp32-weather-station.ino';
     }
   })();
 </script>
