@@ -69,6 +69,51 @@
       border-radius: 10px;
       border: 1px solid rgba(0,0,0,.15);
     }
+
+    /* NEW: list style */
+    .wip-list{
+      margin: .75rem 0 0;
+      color:#444;
+      line-height:1.55;
+      padding-left: 1.15rem;
+    }
+
+    /* NEW: sketches grid */
+    .wip-grid{
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 14px;
+      margin-top: .75rem;
+    }
+    .wip-tile{
+      grid-column: span 6;
+      background:#fff;
+      border-radius: 12px;
+      overflow:hidden;
+      border: 1px solid rgba(0,0,0,.08);
+    }
+    .wip-tile img{
+      width:100%;
+      height:auto;
+      display:block;
+      background:#f2f2f2;
+    }
+    .wip-tile-body{
+      padding: .85rem .9rem;
+    }
+    .wip-tile-title{
+      margin: 0 0 .25rem 0;
+      font-size: 1rem;
+    }
+    .wip-tile-desc{
+      margin: 0;
+      color:#555;
+      line-height:1.45;
+      font-size: .95rem;
+    }
+    @media (max-width: 720px){
+      .wip-tile{ grid-column: span 12; }
+    }
   </style>
 </head>
 
@@ -77,10 +122,32 @@
   <!-- Header -->
   <header class="wip-hero">
     <h1>5-Axis Robotic Arm <span class="badge">WIP</span></h1>
-    <p>Work in Progress — cycloidal drive experiments, mechanics and motion tests.</p>
+    <p>Study project — learning robotics through real mechanical design, cycloidal drive experiments and motion tests.</p>
   </header>
 
   <main class="wip-wrap">
+
+    <!-- Why this project -->
+    <section class="wip-section">
+      <div class="wip-card">
+        <h2 class="wip-title">Why I’m building this</h2>
+        <p class="wip-caption">
+          I’m building this 5-axis robotic arm as a <strong>hands-on study project</strong> to get closer to
+          <strong>robotics and automation</strong> in a concrete way.
+          Instead of learning only from theory, I’m using real mechanical design, prototyping and motion tests to understand:
+        </p>
+
+        <ul class="wip-list">
+          <li>mechanical transmissions (cycloidal drives, tolerances, backlash)</li>
+          <li>structural rigidity and repeatable motion</li>
+          <li>multi-axis actuation and control concepts</li>
+        </ul>
+
+        <p class="wip-caption" style="margin-bottom:0;">
+          The goal is not “a perfect industrial robot”, but a compact modular platform that lets me iterate and learn quickly.
+        </p>
+      </div>
+    </section>
 
     <!-- 1) Concept & goal -->
     <section class="wip-section">
@@ -91,12 +158,52 @@
                alt="Concept sketch of the 5-axis robotic arm" />
         </div>
         <p class="wip-caption">
-          This sketch shows the final concept of the 5-axis robotic arm.
+          This sketch shows the overall concept of the 5-axis robotic arm.
           The objective is a compact, modular structure focused on cycloidal drives
           and reliable, repeatable motion.
         </p>
       </div>
     </section>
+
+    <!-- Component sketches -->
+<section class="wip-section">
+  <div class="wip-card">
+    <h2 class="wip-title">Component sketches</h2>
+    <p class="wip-caption">
+      Two key components that drive the design of the entire arm:
+      the cycloidal transmission and the shoulder structure.
+      These sketches represent early design reasoning before committing to printed parts.
+    </p>
+
+    <div class="wip-grid">
+
+      <div class="wip-tile">
+        <img src="assets/img/braccio-robotico/sketch-cycloidal.jpeg"
+             alt="Cycloidal drive sketch and design notes" />
+        <div class="wip-tile-body">
+          <h3 class="wip-tile-title">Cycloidal drive</h3>
+          <p class="wip-tile-desc">
+            Sketch exploring geometry, tolerances and assembly of the cycloidal transmission,
+            focusing on smooth motion and backlash reduction.
+          </p>
+        </div>
+      </div>
+
+      <div class="wip-tile">
+        <img src="assets/img/braccio-robotico/sketch-shoulder.jpeg"
+             alt="Shoulder joint sketch and structural concept" />
+        <div class="wip-tile-body">
+          <h3 class="wip-tile-title">Shoulder assembly</h3>
+          <p class="wip-tile-desc">
+            Structural concept for the shoulder joint, studying load paths,
+            rigidity and motor placement for multi-axis movement.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
 
     <!-- 2) Cycloidal iterations -->
     <section class="wip-section">
@@ -118,7 +225,7 @@
       <div class="wip-card">
         <h2 class="wip-title">3) Cycloidal Movement Test</h2>
         <div class="wip-media">
-        <video autoplay loop muted playsinline>
+          <video autoplay loop muted playsinline>
             <source src="assets/video/braccio-robotico/cycloidal-motion.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
