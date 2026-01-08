@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>Portafoto LED — Project</title>
-  <meta name="description" content="Cornice portafoto stampata in 3D con illuminazione LED, progettata su SolidWorks. Modello 3D ruotabile, galleria foto e download dei file STL.">
+  <title>LED Picture Frame — Project</title>
+  <meta name="description" content="3D-printed LED picture frame designed in SolidWorks. Rotatable 3D model, photo gallery and STL file downloads.">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
   <link href="css/styles.css" rel="stylesheet"/>
   <script type="module" src="https://cdn.jsdelivr.net/npm/@google/model-viewer@3.4.0/dist/model-viewer.min.js"></script>
@@ -39,7 +39,7 @@
       model-viewer{ height:260px; }
     }
 
-    /* Lightbox come nel progetto ESP32 */
+    /* Lightbox (same logic as ESP32 project) */
     .lightbox{
       display:none;
       position:fixed;
@@ -92,21 +92,21 @@
   </div>
 </nav>
 
-<!-- Header progetto -->
+<!-- Project Header -->
 <header class="py-5 bg-primary text-white text-center">
   <div class="container">
-    <h1 class="mb-2">Portafoto LED</h1>
+    <h1 class="mb-2">LED Picture Frame</h1>
     <p class="lead mb-0">
-      Cornice portafoto stampata in 3D, composta da tre parti (cornice, retro e base) con
-      spazio interno per una strip LED. Progettata in SolidWorks e pensata per essere
-      facile da stampare e assemblare.
+      A 3D-printed picture frame composed of three parts (frame, back cover, and base),
+      featuring internal space for an LED strip. Designed in SolidWorks with a focus on
+      ease of printing and simple assembly.
     </p>
   </div>
 </header>
 
 <main class="container my-4">
 
-  <!-- Modello 3D -->
+  <!-- 3D Model -->
   <section class="section-narrow mb-4">
     <h2 class="h4 mb-3">3D Model (rotate me)</h2>
     <model-viewer
@@ -118,14 +118,14 @@
     </model-viewer>
   </section>
 
-  <!-- Galleria foto -->
+  <!-- Photo Gallery -->
   <section class="section-narrow mb-4">
     <h2 class="h4 mb-3">Photo Gallery</h2>
     <div class="gallery-grid">
-      <img src="assets/img/portfolio/portafoto-thumb.jpeg" alt="Portafoto LED – vista frontale" />
-      <img src="assets/img/portfolio/portafoto-1.jpeg" alt="Portafoto LED – dettaglio" />
-      <img src="assets/img/portfolio/portafoto-2.jpeg" alt="Portafoto LED – retro" />
-      <img src="assets/img/portfolio/portafoto-3.jpeg" alt="Portafoto LED – con foto inserita" />
+      <img src="assets/img/portfolio/portafoto-thumb.jpeg" alt="LED picture frame – front view" />
+      <img src="assets/img/portfolio/portafoto-1.jpeg" alt="LED picture frame – detail view" />
+      <img src="assets/img/portfolio/portafoto-2.jpeg" alt="LED picture frame – rear view" />
+      <img src="assets/img/portfolio/portafoto-3.jpeg" alt="LED picture frame – with photo inserted" />
     </div>
   </section>
 
@@ -137,14 +137,14 @@
     <button class="close">&times;</button>
   </div>
 
-  <!-- Download file STL -->
+  <!-- STL Downloads -->
   <section class="section-narrow mb-5">
     <h2 class="h4 mb-3">Downloads</h2>
-    <p class="mb-2">I tre pezzi che compongono il portafoto:</p>
+    <p class="mb-2">The three parts that make up the picture frame:</p>
     <ul>
-      <li><a href="assets/stl/portafoto-cornice.stl" download>Cornice portafoto (.stl)</a></li>
-      <li><a href="assets/stl/portafoto-retro.stl" download>Retro portafoto (.stl)</a></li>
-      <li><a href="assets/stl/portafoto-base.stl" download>Base portafoto (.stl)</a></li>
+      <li><a href="assets/stl/portafoto-cornice.stl" download>Picture frame (.stl)</a></li>
+      <li><a href="assets/stl/portafoto-retro.stl" download>Back cover (.stl)</a></li>
+      <li><a href="assets/stl/portafoto-base.stl" download>Base (.stl)</a></li>
     </ul>
   </section>
 
@@ -158,7 +158,7 @@
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 
-<!-- Lightbox script (come ESP32 ma solo immagini) -->
+<!-- Lightbox Script (images only) -->
 <script>
   const lightbox = document.getElementById('lightbox');
   const lightboxImg = document.getElementById('lightbox-img');
