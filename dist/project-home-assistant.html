@@ -1,1 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Home Assistant Smart System — Project</title>
+  <meta name="description" content="Home automation project using Jetson Nano, ESP32 and Alexa.">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="css/styles.css" rel="stylesheet"/>
 
+  <style>
+    .section-narrow { max-width: 980px; margin: 0 auto; }
+    .gallery-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:1rem;
+    }
+    img, video{
+      max-width:100%;
+      height:auto;
+      display:block;
+      border-radius:.5rem;
+      object-fit:cover;
+      cursor:pointer;
+    }
+    section{ margin-bottom:2.25rem; }
+
+    .lightbox{
+      display:none;
+      position:fixed;
+      inset:0;
+      z-index:1050;
+      background:rgba(0,0,0,.9);
+      justify-content:center;
+      align-items:center;
+      flex-direction:column;
+    }
+    .lightbox.active{ display:flex; }
+
+    .lightbox img, .lightbox video{
+      max-width:90%;
+      max-height:80vh;
+      object-fit:contain;
+      border-radius:.5rem;
+      box-shadow:0 0 20px rgba(255,255,255,.2);
+    }
+
+    .lightbox button{
+      position:absolute;
+      top:50%;
+      transform:translateY(-50%);
+      background:rgba(255,255,255,.3);
+      border:none;
+      color:#fff;
+      font-size:2rem;
+      padding:.5rem .9rem;
+      border-radius:50%;
+      cursor:pointer;
+    }
+
+    .lightbox .prev{ left:5%; }
+    .lightbox .next{ right:5%; }
+
+    .lightbox .close{
+      top:5%;
+      right:5%;
+      transform:none;
+      font-size:1.8rem;
+    }
+  </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg bg-secondary text-uppercase">
+  <div class="container">
+    <a class="navbar-brand text-white" href="index.html#portfolio">← Back to Portfolio</a>
+  </div>
+</nav>
+
+<header class="py-5 bg-primary text-white text-center">
+  <div class="container">
+    <h1 class="mb-2">Home Assistant Smart System</h1>
+    <p class="lead mb-0">
+      A home automation system built around Jetson Nano, ESP32 and Alexa, with a custom smart artwork node combining environmental sensing and visual interaction.
+    </p>
+  </div>
+</header>
+
+<main class="container my-4">
+
+  <section class="section-narrow">
+    <h2 class="h4 mb-3">Project Overview</h2>
+    <p>
+      This project combines home automation, embedded electronics and visual design into one connected system.
+      A Jetson Nano runs Home Assistant as the main server, while ESP32 boards manage sensors, LEDs and local interaction.
+      Alexa and smart plugs are integrated into the same automation flow.
+    </p>
+    <img src="assets/img/portfolio/home-assistant-thumb.jpeg" alt="Overview of the Home Assistant smart system">
+  </section>
+
+  <section class="section-narrow">
+    <h2 class="h4 mb-3">System Architecture</h2>
+    <p>
+      The Jetson Nano acts as the Home Assistant server, connected through the router to Alexa, ESP32 nodes and smart plugs.
+      This structure allows centralized automation with distributed physical devices.
+    </p>
+
+    <div class="gallery-grid">
+      <img src="assets/img/portfolio/jetson-nano.jpeg" alt="Jetson Nano used as Home Assistant server">
+      <img src="assets/img/portfolio/system-diagram.jpeg" alt="System architecture diagram">
+    </div>
+  </section>
+
+  <section class="section-narrow">
+    <h2 class="h4 mb-3">Smart Artwork Node</h2>
+    <p>
+      One of the key parts of the project is a custom artwork-like object built around a broken motherboard.
+      The motherboard was reused as a visual element, while an ESP32 controls colored LEDs and reads a DHT11 humidity sensor.
+      A custom 3D-printed frame hides the electronics and gives the object a finished appearance.
+    </p>
+
+    <div class="gallery-grid">
+      <img src="assets/img/portfolio/artwork-front.jpeg" alt="Front view of the smart artwork node">
+      <img src="assets/img/portfolio/artwork-back.jpeg" alt="Back view of the smart artwork node">
+    </div>
+  </section>
+
+  <section class="section-narrow">
+    <h2 class="h4 mb-3">Demo</h2>
+    <div class="gallery-grid">
+      <video autoplay muted loop playsinline preload="auto">
+        <source src="assets/video/home-assistant/artwork-demo.mp4" type="video/mp4">
+      </video>
+    </div>
+  </section>
+
+  <div class="lightbox" id="lightbox">
+    <button class="prev">&#10094;</button>
+    <img src="" alt="Expanded media" id="lightbox-img">
+    <video id="lightbox-video" controls playsinline muted loop></video>
+    <button class="next">&#10095;</button>
+    <button class="close">&times;</button>
+  </div>
+
+</main>
+
+<footer class="text-center py-4 bg-light">
+  <div class="container">
+    <a href="index.html#portfolio" class="btn btn-primary">← Back to Portfolio</a>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+  const lightbox = document.getElementById('lightbox');
+  const imgBox = document.getElementById('lightbox-img');
+  const videoBox = document.getElementById('lightbox-video');
+  const mediaItems = document.querySelectorAll('.gallery-grid img, .gallery-grid video');
+  let current = 0;
+
+  mediaItems.forEach((el, i) => {
+    el.addEventListener('click', () => { current = i; openLightbox(); });
+  });
+
+  function openLightbox(){ lightbox.classList.add('active'); showCurrent(); }
+
+  function showCurrent(){
+    const el = mediaItems[current];
+    if (el.tagName === 'IMG') {
+      videoBox.pause();
+      videoBox.removeAttribute('src');
+      videoBox.load();
+      videoBox.style.display = 'none';
+      imgBox.style.display = 'block';
+      imgBox.src = el.src;
+      imgBox.alt = el.alt || '';
+    } else {
+      imgBox.removeAttribute('src');
+      imgBox.style.display = 'none';
+      videoBox.style.display = 'block';
+      const src = el.querySelector('source') ? el.querySelector('source').src : el.src;
+      videoBox.src = src;
+      videoBox.muted = true;
+      videoBox.loop = true;
+      videoBox.play().catch(()=>{});
+    }
+  }
+
+  document.querySelector('.lightbox .close').onclick = () => {
+    lightbox.classList.remove('active');
+    videoBox.pause();
+  };
+  document.querySelector('.lightbox .prev').onclick = () => change(-1);
+  document.querySelector('.lightbox .next').onclick = () => change(1);
+
+  function change(dir){
+    current = (current + dir + mediaItems.length) % mediaItems.length;
+    showCurrent();
+  }
+
+  lightbox.addEventListener('click', e => {
+    if (e.target === lightbox) {
+      lightbox.classList.remove('active');
+      videoBox.pause();
+    }
+  });
+</script>
+
+</body>
+</html>
