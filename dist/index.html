@@ -28,10 +28,7 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ms-auto">
             <li class="nav-item"><a class="nav-link rounded" href="#portfolio">Portfolio</a></li>
-
-            <!-- ✅ ADDED: link to Working Progress -->
             <li class="nav-item"><a class="nav-link rounded" href="#wip">Work In Progress</a></li>
-
             <li class="nav-item"><a class="nav-link rounded" href="#about">About</a></li>
             <li class="nav-item"><a class="nav-link rounded" href="#skills">Skills</a></li>
             <li class="nav-item"><a class="nav-link rounded" href="#contact">Contact</a></li>
@@ -110,6 +107,19 @@
             </a>
           </div>
 
+          <!-- Home Assistant Automation -->
+          <div class="col-md-6 col-lg-4 mb-5">
+            <a class="portfolio-item mx-auto portfolio-card" href="project-home-assistant.html">
+              <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                <div class="portfolio-item-caption-content text-center text-white">
+                  <h3 class="h5 m-0">Home Assistant Automation</h3>
+                  <small>Jetson Nano, ESP32 & Alexa</small>
+                </div>
+              </div>
+              <img class="img-fluid" src="assets/img/portfolio/home-assistant-thumb.jpeg" alt="Home Assistant Automation thumbnail" />
+            </a>
+          </div>
+
         </div>
       </div>
     </section>
@@ -145,33 +155,32 @@
 
     <!-- About -->
     <section class="page-section bg-primary text-white mb-0" id="about">
-  <div class="container">
-    <h2 class="page-section-heading text-center text-uppercase text-white">About Me</h2>
-    <div class="divider-custom divider-light my-3">
-      <div class="divider-custom-line"></div>
-      <div class="divider-custom-icon"><i class="fas fa-microchip"></i></div>
-      <div class="divider-custom-line"></div>
-    </div>
+      <div class="container">
+        <h2 class="page-section-heading text-center text-uppercase text-white">About Me</h2>
+        <div class="divider-custom divider-light my-3">
+          <div class="divider-custom-line"></div>
+          <div class="divider-custom-icon"><i class="fas fa-microchip"></i></div>
+          <div class="divider-custom-line"></div>
+        </div>
 
-    <div class="row justify-content-center">
-      <div class="col-lg-8">
-        <p class="lead">
-          I’m <strong>Diego Bergia</strong>, an electronics and automation enthusiast focused on building
-          physical systems that interact with people and the environment.
-          I enjoy turning ideas into real prototypes by combining hardware, software, and mechanical design.
-        </p>
+        <div class="row justify-content-center">
+          <div class="col-lg-8">
+            <p class="lead">
+              I’m <strong>Diego Bergia</strong>, an electronics and automation enthusiast focused on building
+              physical systems that interact with people and the environment.
+              I enjoy turning ideas into real prototypes by combining hardware, software, and mechanical design.
+            </p>
 
-        <p class="lead">
-          My projects often involve embedded electronics, sensors, motors, and custom 3D-printed parts,
-          with a strong emphasis on experimentation and problem-solving.
-          I’m particularly interested in interactive systems, automation, and intelligent devices where
-          software meets the physical world.
-        </p>
+            <p class="lead">
+              My projects often involve embedded electronics, sensors, motors, and custom 3D-printed parts,
+              with a strong emphasis on experimentation and problem-solving.
+              I’m particularly interested in interactive systems, automation, and intelligent devices where
+              software meets the physical world.
+            </p>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-</section>
-
+    </section>
 
     <!-- Skills -->
     <section class="page-section text-center" id="skills">
@@ -215,7 +224,7 @@
       </div>
     </section>
 
-    <!-- CONTACT MODAL (Contact Chooser) -->
+    <!-- CONTACT MODAL -->
     <div class="modal fade" id="contactChooser" tabindex="-1" aria-hidden="true" aria-labelledby="contactChooserLabel">
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
@@ -225,7 +234,6 @@
           </div>
           <div class="modal-body">
             <div class="d-grid gap-2">
-              <!-- ✅ tiny tweak: target blank often helps on some browsers -->
               <a class="btn btn-primary"
                  href="mailto:diego.bergia.03@gmail.com?subject=Hello%20Diego&body=Hi%20Diego,%0A%0A"
                  target="_blank" rel="noopener">
